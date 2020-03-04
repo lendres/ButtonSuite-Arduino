@@ -22,21 +22,14 @@
 */
 
 /*
-  This is a base classed used for adding behavior to push buttons (momentary buttons).  It
-  uses a Debouncer to prevent accidental double readings.  It also only reads on the
-  down push and ignores the state change coming from releasing the button.
-  
-  This class also acts as a base class for other button related classes.
-
-  The work of debouncing and catching the falling event (HIGH to LOW) is done by the
-  Bounce2 library.
-
-  See also: ToggleButton, PushButtonCounter
+  This is standard momentary button.  It returns true when the button is pressed
+  and false when it is not.
 */
 
 /*
   To use a button with this library, the button should be wired with one side
-  connected to the Arduino pin and the other side connected to ground.
+  connected to the Arduino pin and the other side connected to ground such that
+  when the button is pressed, the pin is brought to ground (LOW).
 */
 
 #ifndef PUSHBUTTON_H

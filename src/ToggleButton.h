@@ -26,11 +26,15 @@
   Pressing the button alternates between on (true) and off (false).  If the
   button is pushed once to turn in on (true) it will continue to return on
   (true) until the button is pushed again.  This effectively creates a
-  virtual latching switch controled by a momentary button.
+  virtual latching switch controled by a momentary button.  The toggle button
+  can be reset to the base (known) state by the user (with a long press, if
+  enabled) or programmically.
+*/
 
-  The work of debouncing, catching the falling event (HIGH to LOW), and filtering
-  out the rising event (LOW to HIGH) is done by the Bounce2 library.  This wrapper
-  adds a memory so it can remember if the virtual button is on or off.
+/*
+  To use a button with this library, the button should be wired with one side
+  connected to the Arduino pin and the other side connected to ground such that
+  when the button is pressed, the pin is brought to ground (LOW).
 */
 
 #ifndef TOGGLEBUTTON_H

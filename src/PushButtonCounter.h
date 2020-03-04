@@ -23,11 +23,15 @@
 
 /*
   Turns a push button (momentary button) into a counter.  The counter is
-  incremented each time the button is pushed.
-  
-  The work of debouncing, catching the falling event (HIGH to LOW), and filtering
-  out the rising event (LOW to HIGH) is done by the Bounce2 library.  This wrapper
-  adds a memory so it can remember if the virtual button is on or off.
+  incremented each time the button is pushed.  The counter continues to
+  increment until it is reset by either the user (with a long press, if enabled)
+  or programically reset.
+*/
+
+/*
+  To use a button with this library, the button should be wired with one side
+  connected to the Arduino pin and the other side connected to ground such that
+  when the button is pressed, the pin is brought to ground (LOW).
 */
 
 #ifndef PUSHBUTTONCOUNTER_H

@@ -24,11 +24,20 @@
 /*
   Turns a push button (momentary button) into a button used to cycle through states.
   Pressing the button causes the value to increment.  Once the maximum value
-  is reached, the value resets to the initial value.
+  is reached, the value automatically resets to the initial value.  The value can
+  also be reset to the initial value by the user (with a long press, if enabled) or
+  programmically reset.
 
-  The work of debouncing, catching the falling event (HIGH to LOW), and filtering
-  out the rising event (LOW to HIGH) is done by the Bounce2 library.  This wrapper
-  adds a memory so it can remember if the virtual button is on or off.
+  For example:
+  If the minimum value is set to 0 and the maximum is set to 4, the button will
+  initially return 0.  Repeated presses of the button will return 1-2-3-4, in order.
+  A fifth press of the button will return 0 and the cycle will continue.
+*/
+
+/*
+  To use a button with this library, the button should be wired with one side
+  connected to the Arduino pin and the other side connected to ground such that
+  when the button is pressed, the pin is brought to ground (LOW).
 */
 
 #ifndef CYCLEBUTTON_H
