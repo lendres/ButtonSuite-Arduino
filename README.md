@@ -20,20 +20,13 @@ https://github.com/lendres/ButtonSuite-Arduino
 
 This library requires the following librarys to run:
 
-```
-Bounce2
-```
-
 * [Bounce2](https://github.com/thomasfredericks/Bounce2) - Debouncer for Arduino
 
 
 ### Installing
 
-For information on installing Arduino libaries, see:
+For information on installing Arduino libaries, see: [Arduino Libraries](http://www.arduino.cc/en/Guide/Libraries)
 
-```
-http://www.arduino.cc/en/Guide/Libraries
-```
 
 ## Versioning
 
@@ -45,4 +38,4 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
