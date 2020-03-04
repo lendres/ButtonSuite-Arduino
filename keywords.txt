@@ -1,44 +1,44 @@
 ################################
 # Classes
 ################################
-ButtonBase		KEYWORD1
-ResetableButton		KEYWORD1
+ButtonBase	KEYWORD1
+ResetableButton	KEYWORD1
 
-PushButton		KEYWORD1
+PushButton	KEYWORD1
 
-ToggleButton		KEYWORD1
+ToggleButton	KEYWORD1
 PushButtonCounter	KEYWORD1
-CycleButton		KEYWORD1
+CycleButton	KEYWORD1
 
 ################################
 # Functions
 ################################
 setDebounceInterval	keyword2
-update			keyword2
+update	keyword2
 
 setLongPressReset	keyword2
 setLongPressInterval	keyword2
-reset			keyword2
+reset	keyword2
 
-isPressed		keyword2
+isPressed	keyword2
 
-setDefaultState		keyword2
-getState		keyword2
+setDefaultState	keyword2
+getState	keyword2
 
-getCount		keyword2
+getCount	keyword2
 
-setMinimum		keyword2
-setMaximum		keyword2
-getValue		keyword2
+setMinimum	keyword2
+setMaximum	keyword2
+getValue	keyword2
 
 ################################
 # Enums
 ################################
-BUTTONSTATUS		literal1
-ISPRESSED		literal2
-WASSHORTPRESSED		literal2
-WASLONGPRESSED		literal2
-ISIDLE			literal2
+BUTTONSTATUS	literal1
+ISPRESSED	literal2
+WASSHORTPRESSED	literal2
+WASLONGPRESSED	literal2
+ISIDLE	literal2
 
 CYCLEBASE		literal1
 ZEROBASED		literal2
