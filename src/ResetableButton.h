@@ -23,7 +23,11 @@
 
 /*
   Abstract class for button classes that use a long press to indicate they should
-  reset themselves to some initial/base value.
+  reset themselves to some initial/base value.  Exposes the interface for setting
+  the enable/disable of the long press and the duration of the interval.
+
+  The ButtonBase holds the long press interval duration because it needs it to
+  differentiate a short versus a long press.
 */
 
 #ifndef RESETABLEBUTTON_H
@@ -35,9 +39,13 @@
 class ResetableButton : public ButtonBase
 {
   protected:
+    // This is an abstract class and is only instantiated by derived classes.
+    // Therefore, all the constructors should be protected.
     ResetableButton(int pin);
     ResetableButton(int pin, int debounceInterval);
-    ~ResetableButton();
+
+  public:
+    virtual ~ResetableButton();
 
   public:
     // If true, a long press resets to the initial state.  Enabled by default.

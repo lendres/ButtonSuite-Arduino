@@ -22,14 +22,15 @@
 */
 
 /*
-  This is a base classed used for adding behavior to push buttons (momentary buttons).  It
-  uses a Debouncer to prevent accidental double readings.  It also only reads on the
-  down push and ignores the state change coming from releasing the button.
+  This is a base class used for adding behavior to push buttons (momentary buttons).
+  It uses a debouncer to prevent accidental double readings.  It separates the button
+  behavior into currently pressed, short press, long press, or idle (nothing
+  happening).
   
   This class also acts as a base class for other button related classes.
 
-  The work of debouncing and catching the falling event (HIGH to LOW) is done by the
-  Bounce2 library.
+  The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
+  is done by the Bounce2 library.
 
   See also: PushButton, ToggleButton, PushButtonCounter, CycleButton
 */
@@ -60,21 +61,31 @@ enum BUTTONSTATUS
 class ButtonBase
 {
   protected:
+    // This is an abstract class and is only instantiated by derived classes.
+    // Therefore, all the constructors should be protected.
     ButtonBase(int pin);
     ButtonBase(int pin, int debounceInterval);
-    ~ButtonBase();
+
+  public:
+    virtual ~ButtonBase();
 
   public:
     void setDebounceInterval(int debounceInterval);
 
   protected:
-    // Checks the button and returns true if the button is pushed.
+    // Checks the button and returns the status/state.
     BUTTONSTATUS update();
 
   private:
     Bounce 		        _debouncer;
 
   protected:
+    // This class needs to have the long press interval so it can determine if
+    // a button press was short or long.  However, not all classes derived from
+    // this class use a long press.  Therefore, another class exposes the setting
+    // of the long press interval.  If a derived class does not use a long press,
+    // then that class to determine how a long press is handled (like a short press,
+    // ignore it, et cetera).
     unsigned long     _longPressInterval;
 };
 

@@ -52,11 +52,15 @@ void ButtonBase::setDebounceInterval(int debounceInterval)
 
 BUTTONSTATUS ButtonBase::update()
 {
-  // Have the debouncer update.
+  // Have the debouncer update.  This does most of the work of handling the button state.
+  // The debouncer determines the current state, if the state changed since the last time
+  // "update" was called, what the time between state changes was, and so on.
   _debouncer.update();
 
-  // Read returns true if the pin is reading high.  In our case, if the pin is low, the
-  // button is pressed.
+  // Look to see if the button is currently pressed.
+  // The "Bounce.read()" function returns true if the pin is reading high.  In
+  // our case, the button is pressed if the pin is low.  So the button is pressed
+  // if "read" returns false.
   if (!_debouncer.read())
   {
     #ifdef BUTTONDEBUG
@@ -65,7 +69,9 @@ BUTTONSTATUS ButtonBase::update()
     return ISPRESSED;
   } 
 
-  // Catch transitions from LOW to HIGH.
+  // Catch transitions from LOW to HIGH.  This is the button release.  If the
+  // button is released, we then check to see if the press duration makes is a
+  // short or long press.
   if (_debouncer.rose())
   {
     // Button was pushed so remember the last press type.
@@ -86,9 +92,10 @@ BUTTONSTATUS ButtonBase::update()
   }
   else
   {
-    // Button is still in unpushed state.
+    // Button is still in unpushed state and did not just get released.  In
+    // this case, the button is considered idle (nothing happened).
     #ifdef BUTTONDEBUG
-      Serial.println("ButtonBase::update: IDLE");
+      Serial.println("ButtonBase::update: ISIDLE");
     #endif
     return ISIDLE;
   }
