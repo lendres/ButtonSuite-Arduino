@@ -16,7 +16,7 @@ Turns a push button (momentary button) into a button used to cycle through state
 
 
 ## About the Library
-###Github Page
+### Github Page
 
 https://github.com/lendres/ButtonSuite-Arduino
 
