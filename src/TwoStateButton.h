@@ -22,32 +22,26 @@
 */
 
 /*
-	This is standard momentary button.  It returns true when the button is pressed
-	and false when it is not.
+	Abstract class that provides interface for a two state button (button that only has
+	an on and off state).
 */
 
-/*
-	To use a button with this library, the button should be wired with one side
-	connected to the Arduino pin and the other side connected to ground such that
-	when the button is pressed, the pin is brought to ground (LOW).
-*/
-
-#ifndef MOMENTARYBUTTON_H
-#define MOMENTARYBUTTON_H
+#ifndef TWOSTATEBUTTON_H
+#define TWOSTATEBUTTON_H
 
 #include "Arduino.h"
-#include "TwoStateButton.h"
+#include "ButtonBase.h"
 
-class MomentaryButton : public TwoStateButton
+class TwoStateButton : public ButtonBase
 {
 	public:
-		MomentaryButton(int pin);
-		MomentaryButton(int pin, int debounceInterval);
-		~MomentaryButton();
+		TwoStateButton(int pin);
+		TwoStateButton(int pin, int debounceInterval);
+		~TwoStateButton();
 
 	public:
 		// Returns true if the button is currently pressed.
-		bool getState();
+		virtual bool getState() = 0;
 };
 
 #endif

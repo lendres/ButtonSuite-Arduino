@@ -28,7 +28,7 @@ void setup()
 void loop()
 {
 	// Press the button once to turn it on, and again to turn it off.
-	if (button.isPressed())
+	if (button.getState())
 	{
 		digitalWrite(ledPin, HIGH);
 	}

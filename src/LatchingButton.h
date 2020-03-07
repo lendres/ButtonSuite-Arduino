@@ -42,8 +42,9 @@
 
 #include <Arduino.h>
 #include "ResetableButton.h"
+#include "TwoStateButton.h"
 
-class LatchingButton : public ResetableButton
+class LatchingButton : public ResetableButton, public TwoStateButton
 {
 	public:
 		LatchingButton(int pin);
@@ -60,8 +61,8 @@ class LatchingButton : public ResetableButton
 		void reset();
 
 	private:
-		bool 		  _state;
-		bool      _defaultState;
+		bool		_state;
+		bool		_defaultState;
 };
 
 #endif

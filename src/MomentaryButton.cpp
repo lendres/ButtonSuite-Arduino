@@ -25,12 +25,12 @@
 
 // Constructors.
 MomentaryButton::MomentaryButton(int pin) :
-	ButtonBase(pin)
+	TwoStateButton(pin)
 {
 }
 
 MomentaryButton::MomentaryButton(int pin, int debounceInterval) :
-	ButtonBase(pin, debounceInterval)
+	TwoStateButton(pin, debounceInterval)
 {
 }
 
@@ -39,7 +39,7 @@ MomentaryButton::~MomentaryButton()
 {
 }
 
-bool MomentaryButton::isPressed()
+bool MomentaryButton::getState()
 {
 	return update() == ISPRESSED;
 }

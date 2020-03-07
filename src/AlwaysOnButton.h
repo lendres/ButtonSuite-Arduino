@@ -22,28 +22,25 @@
 */
 
 /*
-	This is standard momentary button.  It returns true when the button is pressed
-	and false when it is not.
+	This button always returns true.  The purpose of this class is to provide automatic
+	implimentation of an always on state for libraries or classes the take TwoStateButtons
+	as an argument.  By using a TwoStateButton, as class can automatically implement
+	momentary, latching, or always on behavior depending on which class derived from
+	the TwoStateButton class is used.  This makes it easy to switch behaviors as needed.
 */
 
-/*
-	To use a button with this library, the button should be wired with one side
-	connected to the Arduino pin and the other side connected to ground such that
-	when the button is pressed, the pin is brought to ground (LOW).
-*/
-
-#ifndef MOMENTARYBUTTON_H
-#define MOMENTARYBUTTON_H
+#ifndef ALWAYSONBUTTON_H
+#define ALWAYSONBUTTON_H
 
 #include "Arduino.h"
 #include "TwoStateButton.h"
 
-class MomentaryButton : public TwoStateButton
+class AlwaysOnButton : public TwoStateButton
 {
 	public:
-		MomentaryButton(int pin);
-		MomentaryButton(int pin, int debounceInterval);
-		~MomentaryButton();
+		AlwaysOnButton(int pin);
+		AlwaysOnButton(int pin, int debounceInterval);
+		~AlwaysOnButton();
 
 	public:
 		// Returns true if the button is currently pressed.
