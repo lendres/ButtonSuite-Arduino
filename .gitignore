@@ -1,10 +1,7 @@
 # Development files
 .development
-<<<<<<< HEAD
 .vscode
-=======
 src.ino
->>>>>>> 9a93daeef90fc2a5a0364da29d9fffd80301b60e
 
 # Prerequisites
 *.d
