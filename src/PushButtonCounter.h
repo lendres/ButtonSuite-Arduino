@@ -42,7 +42,7 @@
 
 class PushButtonCounter : public ResetableButton
 {
-public:
+	public:
 		PushButtonCounter(int pin);
 		PushButtonCounter(int pin, int debounceInterval);
 		~PushButtonCounter();
@@ -53,7 +53,7 @@ public:
 		// Return to zero.
 		void reset();
 
-private:
+	private:
 		int 		  _count;
 };
 

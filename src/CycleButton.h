@@ -48,40 +48,40 @@
 
 class CycleButton : ResetableButton
 {
-    // Enums.
-public:
-    // Specifies the base number to count from.  It's the number that will be returned if no button
-    // pushes have been detected.  The default is zero.
-    enum CYCLEBASE
-    {
-        ZEROBASED,
-        ONEBASED
-    };
+	// Enums.
+	public:
+		// Specifies the base number to count from.  It's the number that will be returned if no button
+		// pushes have been detected.  The default is zero.
+		enum CYCLEBASE
+		{
+			ZEROBASED,
+			ONEBASED
+		};
 
-public:
-    CycleButton(int pin);
-    CycleButton(int pin, int maxValue);
-    CycleButton(int pin, CYCLEBASE minValue, int maxValue);
-    CycleButton(int pin, int maxValue, int debounceInterval);
-    CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval);
-    ~CycleButton();
+	public:
+		CycleButton(int pin);
+		CycleButton(int pin, int maxValue);
+		CycleButton(int pin, CYCLEBASE minValue, int maxValue);
+		CycleButton(int pin, int maxValue, int debounceInterval);
+		CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval);
+		~CycleButton();
 
-    // Set the starting value.
-    void setMinimum(CYCLEBASE base);
+		// Set the starting value.
+		void setMinimum(CYCLEBASE base);
 
-    // Set the maximum value.
-    void setMaximum(unsigned int maxValue);
+		// Set the maximum value.
+		void setMaximum(unsigned int maxValue);
 
-    // Checks the button and returns the current state (toggled on or off).
-    int getValue();
+		// Checks the button and returns the current state (toggled on or off).
+		int getValue();
 
-    // Return to default state.
-    void reset();
+		// Return to default state.
+		void reset();
 
-private:
-    unsigned int _minValue;
-    unsigned int _maxValue;
-    unsigned int _value;
+	private:
+		unsigned int _minValue;
+		unsigned int _maxValue;
+		unsigned int _value;
 };
 
 #endif
