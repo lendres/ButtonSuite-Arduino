@@ -63,7 +63,7 @@ BUTTONSTATUS ButtonBase::update()
   // if "read" returns false.
   if (!_debouncer.read())
   {
-    #ifdef BUTTONDEBUG
+    #ifdef BUTTONSUITEDEBUG
       Serial.println("ButtonBase::update: ISPRESSED");
     #endif
     return ISPRESSED;
@@ -77,14 +77,14 @@ BUTTONSTATUS ButtonBase::update()
     // Button was pushed so remember the last press type.
     if (_debouncer.previousDuration() < _longPressInterval)
     {
-      #ifdef BUTTONDEBUG
+      #ifdef BUTTONSUITEDEBUG
         Serial.println("ButtonBase::update: WASSHORTPRESSED");
       #endif
       return WASSHORTPRESSED;
     }
     else
     {
-      #ifdef BUTTONDEBUG
+      #ifdef BUTTONSUITEDEBUG
         Serial.println("ButtonBase::update: WASLONGPRESSED");
       #endif
       return WASLONGPRESSED;
@@ -94,7 +94,7 @@ BUTTONSTATUS ButtonBase::update()
   {
     // Button is still in unpushed state and did not just get released.  In
     // this case, the button is considered idle (nothing happened).
-    #ifdef BUTTONDEBUG
+    #ifdef BUTTONSUITEDEBUG
       Serial.println("ButtonBase::update: ISIDLE");
     #endif
     return ISIDLE;

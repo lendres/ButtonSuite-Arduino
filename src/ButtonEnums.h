@@ -47,42 +47,16 @@
   #define BUTTONSUITEDEBUG
 */
 
-#ifndef BUTTONBASE_H
-#define BUTTONBASE_H
+#ifndef BUTTONENUMS_H
+#define BUTTONENUMS_H
 
-#include "Arduino.h"
-#include "Bounce2.h"
-#include "ButtonEnums.h"
-
-class ButtonBase
+// Button status.
+enum BUTTONSTATUS
 {
-  protected:
-    // This is an abstract class and is only instantiated by derived classes.
-    // Therefore, all the constructors should be protected.
-    ButtonBase(int pin);
-    ButtonBase(int pin, int debounceInterval);
-
-  public:
-    virtual ~ButtonBase();
-
-  public:
-    void setDebounceInterval(int debounceInterval);
-
-  protected:
-    // Checks the button and returns the status/state.
-    BUTTONSTATUS update();
-
-  private:
-    Bounce 		        _debouncer;
-
-  protected:
-    // This class needs to have the long press interval so it can determine if
-    // a button press was short or long.  However, not all classes derived from
-    // this class use a long press.  Therefore, another class exposes the setting
-    // of the long press interval.  If a derived class does not use a long press,
-    // then that class to determine how a long press is handled (like a short press,
-    // ignore it, et cetera).
-    unsigned long     _longPressInterval;
+  ISPRESSED,
+  WASSHORTPRESSED,
+  WASLONGPRESSED,
+  ISIDLE
 };
 
 #endif
