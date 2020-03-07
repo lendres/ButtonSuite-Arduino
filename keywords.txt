@@ -4,10 +4,10 @@
 ButtonBase	KEYWORD1
 ResetableButton	KEYWORD1
 
-PushButton	KEYWORD1
+MomentaryButton	KEYWORD1
 
-ToggleButton	KEYWORD1
-PushButtonCounter	KEYWORD1
+LatchingButton	KEYWORD1
+CountingButton	KEYWORD1
 CycleButton	KEYWORD1
 
 ################################

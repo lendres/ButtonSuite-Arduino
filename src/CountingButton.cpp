@@ -21,42 +21,35 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "ToggleButton.h"
+#include "CountingButton.h"
 
 // Constructors.
-ToggleButton::ToggleButton(int pin) :
+CountingButton::CountingButton(int pin) :
 	ResetableButton(pin),
-	_state(false),
-	_defaultState(false)
+	_count(0)
 {
 }
 
-ToggleButton::ToggleButton(int pin, int debounceInterval) :
+CountingButton::CountingButton(int pin, int debounceInterval) :
 	ResetableButton(pin, debounceInterval),
-	_state(false),
-	_defaultState(false)
+	_count(0)
 {
 }
 
 // Destructor.
-ToggleButton::~ToggleButton()
+CountingButton::~CountingButton()
 {
 }
 
-void ToggleButton::setDefaultState(bool state)
-{
-	_defaultState = state;
-}
-
-bool ToggleButton::getState()
+int CountingButton::getCount()
 {
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
 		case WASSHORTPRESSED:
 		{
-			// Toggle state.
-			_state = !_state;
+			// Button was pushed, so increment counter.
+			_count++;
 			break;
 		}
 
@@ -74,11 +67,11 @@ bool ToggleButton::getState()
 			break;
 		}
 	}
-
-	 return _state;
+	
+	 return _count;
 }
 
-void ToggleButton::reset()
+void CountingButton::reset()
 {
-	_state = _defaultState;
+	_count = 0;
 }

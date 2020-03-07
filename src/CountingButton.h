@@ -21,25 +21,40 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "PushButton.h"
+/*
+	Turns a push button (momentary button) into a counter.  The counter is
+	incremented each time the button is pushed.  The counter continues to
+	increment until it is reset by either the user (with a long press, if enabled)
+	or programically reset.
+*/
 
-// Constructors.
-PushButton::PushButton(int pin) :
-	ButtonBase(pin)
-{
-}
+/*
+	To use a button with this library, the button should be wired with one side
+	connected to the Arduino pin and the other side connected to ground such that
+	when the button is pressed, the pin is brought to ground (LOW).
+*/
 
-PushButton::PushButton(int pin, int debounceInterval) :
-	ButtonBase(pin, debounceInterval)
-{
-}
+#ifndef PUSHBUTTONCOUNTER_H
+#define PUSHBUTTONCOUNTER_H
 
-// Destructor.
-PushButton::~PushButton()
-{
-}
+#include <Arduino.h>
+#include "ResetableButton.h"
 
-bool PushButton::isPressed()
+class CountingButton : public ResetableButton
 {
-	return update() == ISPRESSED;
-}
+	public:
+		CountingButton(int pin);
+		CountingButton(int pin, int debounceInterval);
+		~CountingButton();
+
+		// Checks the button and returns the current count.
+		int getCount();
+
+		// Return to zero.
+		void reset();
+
+	private:
+		int 		  _count;
+};
+
+#endif

@@ -21,57 +21,34 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "PushButtonCounter.h"
+/*
+	This is standard momentary button.  It returns true when the button is pressed
+	and false when it is not.
+*/
 
-// Constructors.
-PushButtonCounter::PushButtonCounter(int pin) :
-	ResetableButton(pin),
-	_count(0)
+/*
+	To use a button with this library, the button should be wired with one side
+	connected to the Arduino pin and the other side connected to ground such that
+	when the button is pressed, the pin is brought to ground (LOW).
+*/
+
+#ifndef MOMENTARYBUTTON_H
+#define MOMENTARYBUTTON_H
+
+#include "Arduino.h"
+#include "ButtonBase.h"
+
+class MomentaryButton : public ButtonBase
 {
-}
+	public:
+		MomentaryButton(int pin);
+		MomentaryButton(int pin, int debounceInterval);
+		~MomentaryButton();
 
-PushButtonCounter::PushButtonCounter(int pin, int debounceInterval) :
-	ResetableButton(pin, debounceInterval),
-	_count(0)
-{
-}
+	public:
+		// Returns true if the button is currently pressed.
+		bool isPressed();
 
-// Destructor.
-PushButtonCounter::~PushButtonCounter()
-{
-}
+};
 
-int PushButtonCounter::getCount()
-{
-	// Catch transitions from HIGH to LOW.
-	switch (update())
-	{
-		case WASSHORTPRESSED:
-		{
-			// Button was pushed, so increment counter.
-			_count++;
-			break;
-		}
-
-		case WASLONGPRESSED:
-		{
-			if (_resetOnLongPress)
-			{
-				reset();
-			}
-			break;
-		}
-
-		default:
-		{
-			break;
-		}
-	}
-	
-	 return _count;
-}
-
-void PushButtonCounter::reset()
-{
-	_count = 0;
-}
+#endif

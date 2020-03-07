@@ -22,10 +22,13 @@
 */
 
 /*
-	Turns a push button (momentary button) into a counter.  The counter is
-	incremented each time the button is pushed.  The counter continues to
-	increment until it is reset by either the user (with a long press, if enabled)
-	or programically reset.
+	Turns a push button (momentary button) into a toggle button (latching button).
+	Pressing the button alternates between on (true) and off (false).  If the
+	button is pushed once to turn in on (true) it will continue to return on
+	(true) until the button is pushed again.  This effectively creates a
+	virtual latching switch controled by a momentary button.  The toggle button
+	can be reset to the base (known) state by the user (with a long press, if
+	enabled) or programmically.
 */
 
 /*
@@ -34,27 +37,31 @@
 	when the button is pressed, the pin is brought to ground (LOW).
 */
 
-#ifndef PUSHBUTTONCOUNTER_H
-#define PUSHBUTTONCOUNTER_H
+#ifndef LATCHINGBUTTON_H
+#define LATCHINGBUTTON_H
 
 #include <Arduino.h>
 #include "ResetableButton.h"
 
-class PushButtonCounter : public ResetableButton
+class LatchingButton : public ResetableButton
 {
 	public:
-		PushButtonCounter(int pin);
-		PushButtonCounter(int pin, int debounceInterval);
-		~PushButtonCounter();
+		LatchingButton(int pin);
+		LatchingButton(int pin, int debounceInterval);
+		~LatchingButton();
 
-		// Checks the button and returns the current count.
-		int getCount();
+		// Set the default state.
+		void setDefaultState(bool state);
 
-		// Return to zero.
+		// Checks the button and returns the current state (true for on or false for off).
+		bool getState();
+
+		// Return to default state.
 		void reset();
 
 	private:
-		int 		  _count;
+		bool 		  _state;
+		bool      _defaultState;
 };
 
 #endif

@@ -21,34 +21,25 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*
-	This is standard momentary button.  It returns true when the button is pressed
-	and false when it is not.
-*/
+#include "MomentaryButton.h"
 
-/*
-	To use a button with this library, the button should be wired with one side
-	connected to the Arduino pin and the other side connected to ground such that
-	when the button is pressed, the pin is brought to ground (LOW).
-*/
-
-#ifndef PUSHBUTTON_H
-#define PUSHBUTTON_H
-
-#include "Arduino.h"
-#include "ButtonBase.h"
-
-class PushButton : public ButtonBase
+// Constructors.
+MomentaryButton::MomentaryButton(int pin) :
+	ButtonBase(pin)
 {
-	public:
-		PushButton(int pin);
-		PushButton(int pin, int debounceInterval);
-		~PushButton();
+}
 
-	public:
-		// Returns true if the button is currently pressed.
-		bool isPressed();
+MomentaryButton::MomentaryButton(int pin, int debounceInterval) :
+	ButtonBase(pin, debounceInterval)
+{
+}
 
-};
+// Destructor.
+MomentaryButton::~MomentaryButton()
+{
+}
 
-#endif
+bool MomentaryButton::isPressed()
+{
+	return update() == ISPRESSED;
+}
