@@ -36,12 +36,12 @@
 #include <Arduino.h>
 #include "ButtonBase.h"
 
-class ResetableButton : public ButtonBase
+class ResetableButton
 {
 	protected:
 		// This is an abstract class and is only instantiated by derived classes.
 		// Therefore, all the constructors should be protected.
-		ResetableButton(int pin);
+		ResetableButton();
 		ResetableButton(int pin, int debounceInterval);
 
 	public:
@@ -50,7 +50,7 @@ class ResetableButton : public ButtonBase
 	public:
 		// If true, a long press resets to the initial state.  Enabled by default.
 		void setLongPressReset(bool enabled);
-		void setLongPressInterval(int longPressInterval);
+		virtual void setLongPressInterval(int longPressInterval) = 0;
 
 		// Return to default state.
 		virtual void reset() = 0;

@@ -44,15 +44,18 @@
 #include "ResetableButton.h"
 #include "TwoStateButton.h"
 
-class LatchingButton : public ResetableButton, public TwoStateButton
+class LatchingButton : public TwoStateButton, public ResetableButton
 {
 	public:
 		LatchingButton(int pin);
 		LatchingButton(int pin, int debounceInterval);
 		~LatchingButton();
 
+	public:
 		// Set the default state.
 		void setDefaultState(bool state);
+
+		void setLongPressInterval(int longPressInterval);
 
 		// Checks the button and returns the current state (true for on or false for off).
 		bool getState();

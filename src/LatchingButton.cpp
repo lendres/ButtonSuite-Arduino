@@ -25,14 +25,14 @@
 
 // Constructors.
 LatchingButton::LatchingButton(int pin) :
-	ResetableButton(pin),
+	TwoStateButton(pin),
 	_state(false),
 	_defaultState(false)
 {
 }
 
 LatchingButton::LatchingButton(int pin, int debounceInterval) :
-	ResetableButton(pin, debounceInterval),
+	TwoStateButton(pin, debounceInterval),
 	_state(false),
 	_defaultState(false)
 {
@@ -48,31 +48,30 @@ void LatchingButton::setDefaultState(bool state)
 	_defaultState = state;
 }
 
+void LatchingButton::setLongPressInterval(int longPressInterval)
+{
+  _longPressInterval = longPressInterval;
+}
+
 bool LatchingButton::getState()
 {
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
 		case WASSHORTPRESSED:
-		{
 			// Toggle state.
 			_state = !_state;
 			break;
-		}
 
 		case WASLONGPRESSED:
-		{
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
 			break;
-		}
 
 		default:
-		{
 			break;
-		}
 	}
 
 	 return _state;

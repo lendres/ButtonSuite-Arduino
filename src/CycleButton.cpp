@@ -25,7 +25,7 @@
 
 // Constructors.
 CycleButton::CycleButton(int pin) :
-	ResetableButton(pin),
+	ButtonBase(pin),
 	_minValue(ZEROBASED),
 	_maxValue(2),
 	_value(0)
@@ -33,7 +33,7 @@ CycleButton::CycleButton(int pin) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue) :
-	ResetableButton(pin),
+	ButtonBase(pin),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -41,7 +41,7 @@ CycleButton::CycleButton(int pin, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
-	ResetableButton(pin),
+	ButtonBase(pin),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -49,7 +49,7 @@ CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
-	ResetableButton(pin, debounceInterval),
+	ButtonBase(pin, debounceInterval),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -57,7 +57,7 @@ CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval) :
-	ResetableButton(pin, debounceInterval),
+	ButtonBase(pin, debounceInterval),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -81,13 +81,17 @@ void CycleButton::setMaximum(unsigned int maxValue)
 	_maxValue = maxValue;
 }
 
+void CycleButton::setLongPressInterval(int longPressInterval)
+{
+  _longPressInterval = longPressInterval;
+}
+
 int CycleButton::getValue()
 {
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
 		case WASSHORTPRESSED:
-		{
 			// Button was pushed, so increment counter.
 			_value++;
 	
@@ -97,21 +101,16 @@ int CycleButton::getValue()
 				reset();
 			}
 			break;
-		}
 
 		case WASLONGPRESSED:
-		{
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
 			break;
-		}
 
 		default:
-		{
 			break;
-		}
 	}
 
 	 return _value;

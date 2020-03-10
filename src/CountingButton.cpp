@@ -25,13 +25,13 @@
 
 // Constructors.
 CountingButton::CountingButton(int pin) :
-	ResetableButton(pin),
+	ButtonBase(pin),
 	_count(0)
 {
 }
 
 CountingButton::CountingButton(int pin, int debounceInterval) :
-	ResetableButton(pin, debounceInterval),
+	ButtonBase(pin, debounceInterval),
 	_count(0)
 {
 }
@@ -41,31 +41,30 @@ CountingButton::~CountingButton()
 {
 }
 
+void CountingButton::setLongPressInterval(int longPressInterval)
+{
+  _longPressInterval = longPressInterval;
+}
+
 int CountingButton::getCount()
 {
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
 		case WASSHORTPRESSED:
-		{
 			// Button was pushed, so increment counter.
 			_count++;
 			break;
-		}
 
 		case WASLONGPRESSED:
-		{
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
 			break;
-		}
 
 		default:
-		{
 			break;
-		}
 	}
 	
 	 return _count;

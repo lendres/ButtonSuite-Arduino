@@ -24,14 +24,7 @@
 #include "ResetableButton.h"
 
 // Constructors.
-ResetableButton::ResetableButton(int pin) :
-	ButtonBase(pin),
-	_resetOnLongPress(true)
-{
-}
-
-ResetableButton::ResetableButton(int pin, int debounceInterval) :
-	ButtonBase(pin, debounceInterval),
+ResetableButton::ResetableButton() :
 	_resetOnLongPress(true)
 {
 }
@@ -44,9 +37,4 @@ ResetableButton::~ResetableButton()
 void ResetableButton::setLongPressReset(bool enabled)
 {
 	_resetOnLongPress = enabled;
-}
-
-void ResetableButton::setLongPressInterval(int longPressInterval)
-{
-	_longPressInterval = longPressInterval;
 }

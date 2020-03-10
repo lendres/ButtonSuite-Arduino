@@ -46,7 +46,7 @@
 #include <Arduino.h>
 #include "ResetableButton.h"
 
-class CycleButton : ResetableButton
+class CycleButton : ButtonBase, ResetableButton
 {
 	// Enums.
 	public:
@@ -66,11 +66,14 @@ class CycleButton : ResetableButton
 		CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval);
 		~CycleButton();
 
+	public:
 		// Set the starting value.
 		void setMinimum(CYCLEBASE base);
 
 		// Set the maximum value.
 		void setMaximum(unsigned int maxValue);
+
+		void setLongPressInterval(int longPressInterval);
 
 		// Checks the button and returns the current state (toggled on or off).
 		int getValue();

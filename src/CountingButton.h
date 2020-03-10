@@ -34,18 +34,21 @@
 	when the button is pressed, the pin is brought to ground (LOW).
 */
 
-#ifndef PUSHBUTTONCOUNTER_H
-#define PUSHBUTTONCOUNTER_H
+#ifndef COUNTINGBUTTON_H
+#define COUNTINGBUTTON_H
 
 #include <Arduino.h>
 #include "ResetableButton.h"
 
-class CountingButton : public ResetableButton
+class CountingButton : public ButtonBase, public ResetableButton
 {
 	public:
 		CountingButton(int pin);
 		CountingButton(int pin, int debounceInterval);
 		~CountingButton();
+
+	public:
+		void setLongPressInterval(int longPressInterval);
 
 		// Checks the button and returns the current count.
 		int getCount();

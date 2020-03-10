@@ -14,7 +14,7 @@
   should be used.
 */
 
-#include <CycleButton.h>
+#include "CycleButton.h"
 
 // Uncomment for additional debugging messages from the library.
 //#define BUTTONDEBUG
