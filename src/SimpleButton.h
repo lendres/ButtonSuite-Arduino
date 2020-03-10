@@ -32,16 +32,16 @@
 #include "Arduino.h"
 #include "ButtonBase.h"
 
-class TwoStateButton : public ButtonBase
+class SimpleButton : public ButtonBase
 {
 	public:
-		TwoStateButton(int pin);
-		TwoStateButton(int pin, int debounceInterval);
-		~TwoStateButton();
+		SimpleButton(int pin);
+		SimpleButton(int pin, int debounceInterval);
+		~SimpleButton();
 
 	public:
 		// Returns true if the button is currently pressed.
-		virtual bool getState() = 0;
+		virtual BUTTONSTATUS getStatus() = 0;
 };
 
 #endif

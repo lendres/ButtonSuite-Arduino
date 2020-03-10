@@ -35,12 +35,12 @@ void setup()
 void loop()
 {
 	// Press the button once to turn it on, and again to turn it off.
-	bool buttonState = button.getState();
+	bool buttonStatus = button.getStatus();
 	
-	Serial.print("Button state: ");
-	Serial.println(buttonState);
-	
-	if (buttonState)
+	Serial.print("Button status: ");
+	Serial.println(buttonStatus);
+
+	if (buttonStatus == ISPRESSED)
 	{
 		digitalWrite(ledPin, HIGH);
 	}

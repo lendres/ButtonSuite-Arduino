@@ -25,15 +25,15 @@
 
 // Constructors.
 LatchingButton::LatchingButton(int pin) :
-	TwoStateButton(pin),
-	_state(false),
+	SimpleButton(pin),
+	_latched(false),
 	_defaultState(false)
 {
 }
 
 LatchingButton::LatchingButton(int pin, int debounceInterval) :
-	TwoStateButton(pin, debounceInterval),
-	_state(false),
+	SimpleButton(pin, debounceInterval),
+	_latched(false),
 	_defaultState(false)
 {
 }
@@ -43,9 +43,9 @@ LatchingButton::~LatchingButton()
 {
 }
 
-void LatchingButton::setDefaultState(bool state)
+void LatchingButton::setDefaultState(bool latched)
 {
-	_defaultState = state;
+	_defaultState = latched;
 }
 
 void LatchingButton::setLongPressInterval(int longPressInterval)
@@ -53,31 +53,47 @@ void LatchingButton::setLongPressInterval(int longPressInterval)
   _longPressInterval = longPressInterval;
 }
 
-bool LatchingButton::getState()
+BUTTONSTATUS LatchingButton::getStatus()
 {
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
+		case WASPRESSED:
+			// Capture the event of the button press.  Some classes may require this to act on it.
+			return WASPRESSED;
+
 		case WASSHORTPRESSED:
 			// Toggle state.
-			_state = !_state;
-			break;
+			_latched = !_latched;
+			return convertStateToButtonStatus();
 
 		case WASLONGPRESSED:
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
-			break;
+			return convertStateToButtonStatus();
 
-		default:
-			break;
+		case ISPRESSED:
+		case NOTPRESSED:
+			// Nothing happened so we return based on the state.
+			return convertStateToButtonStatus();
 	}
-
-	 return _state;
 }
 
 void LatchingButton::reset()
 {
-	_state = _defaultState;
+	_latched = _defaultState;
+}
+
+BUTTONSTATUS LatchingButton::convertStateToButtonStatus()
+{
+	if (_latched)
+	{
+		return ISPRESSED;
+	}
+	else
+	{
+		return NOTPRESSED;
+	}
 }

@@ -53,10 +53,20 @@
 // Button status.
 enum BUTTONSTATUS
 {
+	// Was just pressed down (first call to "update" after the button was pressed).
+	WASPRESSED,
+	
+	// Is still pressed down.
 	ISPRESSED,
+
+	// The button was just released and the duration held down was considered short (less than long press duration).
 	WASSHORTPRESSED,
+
+	// The button was just released and the duration held down was considered long (more than long press duration).
 	WASLONGPRESSED,
-	ISIDLE
+
+	// Button is not pressed/on.
+	NOTPRESSED
 };
 
 #endif

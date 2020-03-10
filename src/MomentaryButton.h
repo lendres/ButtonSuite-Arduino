@@ -36,9 +36,9 @@
 #define MOMENTARYBUTTON_H
 
 #include "Arduino.h"
-#include "TwoStateButton.h"
+#include "SimpleButton.h"
 
-class MomentaryButton : public TwoStateButton
+class MomentaryButton : public SimpleButton
 {
 	public:
 		MomentaryButton(int pin);
@@ -47,7 +47,7 @@ class MomentaryButton : public TwoStateButton
 
 	public:
 		// Returns true if the button is currently pressed.
-		bool getState();
+		BUTTONSTATUS getStatus();
 };
 
 #endif

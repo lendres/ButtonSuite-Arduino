@@ -2,7 +2,7 @@
 # Classes
 ################################
 ButtonBase	KEYWORD1
-TwoStateButton	KEYWORD1
+SimpleButton	KEYWORD1
 ResetableButton	KEYWORD1
 
 AlwaysOnButton	KEYWORD1
@@ -25,7 +25,7 @@ reset	KEYWORD2
 isPressed	KEYWORD2
 
 setDefaultState	KEYWORD2
-getState	KEYWORD2
+getStatus	KEYWORD2
 
 getCount	KEYWORD2
 

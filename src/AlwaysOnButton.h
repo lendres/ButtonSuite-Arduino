@@ -33,9 +33,9 @@
 #define ALWAYSONBUTTON_H
 
 #include "Arduino.h"
-#include "TwoStateButton.h"
+#include "SimpleButton.h"
 
-class AlwaysOnButton : public TwoStateButton
+class AlwaysOnButton : public SimpleButton
 {
 	public:
 		AlwaysOnButton(int pin);
@@ -44,7 +44,7 @@ class AlwaysOnButton : public TwoStateButton
 
 	public:
 		// Returns true if the button is currently pressed.
-		bool getState();
+		BUTTONSTATUS getStatus();
 };
 
 #endif

@@ -57,6 +57,15 @@ BUTTONSTATUS ButtonBase::update()
 	// "update" was called, what the time between state changes was, and so on.
 	_debouncer.update();
 
+	// Catch transitions from HIGH to LOW.  This is the button press.
+	if (_debouncer.fell())
+	{
+		#ifdef BUTTONSUITEDEBUG
+			Serial.println("ButtonBase::update: WASPRESSED");
+		#endif
+		return WASPRESSED;
+	}
+
 	// Look to see if the button is currently pressed.
 	// The "Bounce.read()" function returns true if the pin is reading high.  In
 	// our case, the button is pressed if the pin is low.  So the button is pressed
@@ -90,13 +99,11 @@ BUTTONSTATUS ButtonBase::update()
 			return WASLONGPRESSED;
 		}
 	}
-	else
-	{
-		// Button is still in unpushed state and did not just get released.  In
-		// this case, the button is considered idle (nothing happened).
-		#ifdef BUTTONSUITEDEBUG
-			Serial.println("ButtonBase::update: ISIDLE");
-		#endif
-		return ISIDLE;
-	}
+	
+	// Button is still in unpushed state and did not just get released.  In
+	// this case, the button is considered idle (nothing happened).
+	#ifdef BUTTONSUITEDEBUG
+		Serial.println("ButtonBase::update: NOTPRESSED");
+	#endif
+	return NOTPRESSED;
 }
