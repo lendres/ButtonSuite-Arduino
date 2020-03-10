@@ -76,6 +76,7 @@ BUTTONSTATUS LatchingButton::getStatus()
 
 		case ISPRESSED:
 		case NOTPRESSED:
+		default:
 			// Nothing happened so we return based on the state.
 			return convertStateToButtonStatus();
 	}
