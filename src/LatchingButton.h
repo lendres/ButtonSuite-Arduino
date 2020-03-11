@@ -23,12 +23,24 @@
 
 /*
 	Turns a push button (momentary button) into a toggle button (latching button).
-	Pressing the button alternates between on (ISPRESSED) and off (NOTPRESSED).  If the
-	button is pushed once to turn in on (ISPRESSED) it will continue to return on
-	(ISPRESSED) until the button is pushed again.  This effectively creates a
-	virtual latching switch controled by a momentary button.  The toggle button
-	can be reset to the base (known) state by the user (with a long press, if
+	Pressing the button alternates between on (ISPRESSED) and off (NOTPRESSED).
+	This effectively creates a virtual latching switch controled by a momentary button.
+	The button can be reset to the base (known) state by the user (with a long press, if
 	enabled) or programmically.
+	
+	After a button is press down, the first call to getStatus returns WASPRESSED.
+	This allows a derived class to act on the button down press, if required.  Further
+	calls to getStatus will then return either ISPRESSED or NOTPRESSED depending
+	on the current value of _latched.
+
+	When the button is released, the length of the button press is evaluated.  The behavior
+	is then:
+		Short Press - The value of _latched is switched and the new state returned (as ISPRESSED
+			OR NOT PRESSED).
+
+		Long Press - If reset is enabled, the value of _latched is set to the default state
+			and the new state returned.  If reset is disabled, the behavior is the same as
+			as short press.
 
 	This button only returns the states, WASPRESSED, ISPRESSED or NOTPRESSED.  A short
 	press and a long press are used to either toggle the state or reset the state,

@@ -72,6 +72,10 @@ BUTTONSTATUS LatchingButton::getStatus()
 			{
 				reset();
 			}
+			else
+			{
+				_latched = !_latched;
+			}
 			return convertStateToButtonStatus();
 
 		case ISPRESSED:

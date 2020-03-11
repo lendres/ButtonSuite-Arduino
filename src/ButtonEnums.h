@@ -22,29 +22,7 @@
 */
 
 /*
-	This is a base class used for adding behavior to push buttons (momentary buttons).
-	It uses a debouncer to prevent accidental double readings.  It separates the button
-	behavior into currently pressed, short press, long press, or idle (nothing
-	happening).
-	
-	This class also acts as a base class for other button related classes.
-
-	The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
-	is done by the Bounce2 library.
-
-	See also: PushButton, ToggleButton, PushButtonCounter, CycleButton
-*/
-
-/*
-	To use a button with this library, the button should be wired with one side
-	connected to the Arduino pin and the other side connected to ground.
-*/
-
-/*
-	If you want debugging messages printed to the serial monitor, enable the serial monitor and
-	use the following line in your file:
-	
-	#define BUTTONSUITEDEBUG
+	This file contains enumerations used by the ButtonSuite.
 */
 
 #ifndef BUTTONENUMS_H

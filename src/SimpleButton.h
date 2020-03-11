@@ -24,6 +24,11 @@
 /*
 	Abstract class that provides interface for a two state button (button that only has
 	an on and off state).
+
+	The purpose of this class is to provide automatic implimentation of different behaviors.
+	By using different classes derived from SimpleButton, a class can automatically implement
+	momentary, latching, always on, or always off behavior.  This makes it easy to implement
+	different behaviors or even	switch behaviors during run time.
 */
 
 #ifndef TWOSTATEBUTTON_H

@@ -22,21 +22,21 @@
 */
 
 /*
-	This button always returns ISPRESSED.  See SimpleButton.h for more information.
+	This button always returns NOTPRESSED.  See SimpleButton.h for more information.
 */
 
-#ifndef ALWAYSONBUTTON_H
-#define ALWAYSONBUTTON_H
+#ifndef ALWAYSOFFBUTTON_H
+#define ALWAYSOFFBUTTON_H
 
 #include "Arduino.h"
 #include "SimpleButton.h"
 
-class AlwaysOnButton : public SimpleButton
+class AlwaysOffButton : public SimpleButton
 {
 	public:
-		AlwaysOnButton(int pin);
-		AlwaysOnButton(int pin, int debounceInterval);
-		~AlwaysOnButton();
+		AlwaysOffButton(int pin);
+		AlwaysOffButton(int pin, int debounceInterval);
+		~AlwaysOffButton();
 
 	public:
 		// Returns true if the button is currently pressed.
