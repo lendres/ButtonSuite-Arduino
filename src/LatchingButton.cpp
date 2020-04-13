@@ -65,7 +65,7 @@ BUTTONSTATUS LatchingButton::getStatus()
 		case WASSHORTPRESSED:
 			// Toggle state.
 			_latched = !_latched;
-			return convertStateToButtonStatus();
+			return WASSHORTPRESSED;
 
 		case WASLONGPRESSED:
 			if (_resetOnLongPress)
@@ -76,7 +76,7 @@ BUTTONSTATUS LatchingButton::getStatus()
 			{
 				_latched = !_latched;
 			}
-			return convertStateToButtonStatus();
+			return WASLONGPRESSED;
 
 		case ISPRESSED:
 		case NOTPRESSED:
