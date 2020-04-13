@@ -59,15 +59,20 @@ BUTTONSTATUS LatchingButton::getStatus()
 	switch (update())
 	{
 		case WASPRESSED:
+		{
 			// Capture the event of the button press.  Some classes may require this to act on it.
 			return WASPRESSED;
+		}
 
 		case WASSHORTPRESSED:
+		{
 			// Toggle state.
 			_latched = !_latched;
 			return WASSHORTPRESSED;
+		}
 
 		case WASLONGPRESSED:
+		{
 			if (_resetOnLongPress)
 			{
 				reset();
@@ -77,12 +82,15 @@ BUTTONSTATUS LatchingButton::getStatus()
 				_latched = !_latched;
 			}
 			return WASLONGPRESSED;
+		}
 
 		case ISPRESSED:
 		case NOTPRESSED:
 		default:
+		{
 			// Nothing happened so we return based on the state.
 			return convertStateToButtonStatus();
+		}
 	}
 }
 
