@@ -36,8 +36,10 @@ class AlwaysOnButton : public SimpleButton
 	public:
 		AlwaysOnButton(int pin);
 		AlwaysOnButton(int pin, int debounceInterval);
+		
 		~AlwaysOnButton();
 
+	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:
 		// Returns true if the button is currently pressed.
 		BUTTONSTATUS getStatus();

@@ -45,14 +45,20 @@ class CountingButton : public ButtonBase, public ResetableButton
 	public:
 		CountingButton(int pin);
 		CountingButton(int pin, int debounceInterval);
+
 		~CountingButton();
 
+	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:
 		void setLongPressInterval(int longPressInterval);
 
+	// Status access functions.  Call in the "loop" to get the status of the button.
+	public:
 		// Checks the button and returns the current count.
 		int getCount();
 
+	// Other control functions.
+	public:
 		// Return to zero.
 		void reset();
 

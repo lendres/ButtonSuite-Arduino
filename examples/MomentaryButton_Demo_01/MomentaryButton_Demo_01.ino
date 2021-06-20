@@ -1,5 +1,6 @@
 /*
-	Toggles an LED between on and off with each press of the button.
+	Turns an LED on when the button is pressed and off when the button is released.
+	This example demonstrates the "isPressed" function.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.

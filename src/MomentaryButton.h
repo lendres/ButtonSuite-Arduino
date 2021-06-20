@@ -57,10 +57,10 @@ class MomentaryButton : public SimpleButton
 
 		~MomentaryButton();
 
-	// Access functions.  Call one of these in the "loop" to get the status of the button.
+	// Status access functions.  Call one of these in the "loop" to get the status of the button.
 	public:
 		// Returns true if the button is currently pressed down.  Use this if when you only want to know if the
-		// button is pressed down or not.
+		// button is currently pressed down or not.
 		bool isPressed();
 
 		// Returns true if the button was pressed and released.  Use this to capture individual button presses.

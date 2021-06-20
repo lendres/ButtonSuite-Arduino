@@ -1,6 +1,7 @@
 /*
-	Toggles an LED on when the button is held down and off when the button
-	is released.
+	This example counts and displays the number of times a button is pressed.
+	Once the specified count is reached, an LED is turned on.  A long press
+	will reset the counter and turn the LED off.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
@@ -34,12 +35,17 @@ void setup()
 
 void loop()
 {
-	// Press the button once to turn it on, and again to turn it off.
+	// During each loop, the number of times the button is pressed is retrieved
+	// from the button.
 	int count = button.getCount();
 	
+	// Display the button count on the serial monitor.
 	Serial.print("Button press count: ");
 	Serial.println(count);
 	
+	// If the count is above a specified value, turn the LED on, otherwise turn
+	// if off.  If the button is reset with a long press, the counter is reset
+	// and the LED is turned off.
 	if (count > 4)
 	{
 		digitalWrite(ledPin, HIGH);

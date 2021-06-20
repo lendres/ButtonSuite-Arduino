@@ -47,11 +47,16 @@ class ResetableButton
 	public:
 		virtual ~ResetableButton();
 
+	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:
 		// If true, a long press resets to the initial state.  Enabled by default.
 		void setLongPressReset(bool enabled);
+
+		// Sets the length of time required for a press to be considered a long press.
 		virtual void setLongPressInterval(int longPressInterval) = 0;
 
+	// Other control functions.
+	public:
 		// Return to default state.
 		virtual void reset() = 0;
 

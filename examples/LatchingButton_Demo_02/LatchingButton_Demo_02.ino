@@ -1,6 +1,8 @@
 /*
-	Toggles an LED on when the button is held down and off when the button
-	is released.
+	Toggles an LED when a button is pressed and released.  The LED is set to
+	the current state of the button.  If the button is latched, the LED is on,
+	if the button is not latched, the LED is off.  This example uses the "getStatus"
+	function to determine the current state of the button.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
