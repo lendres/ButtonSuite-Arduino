@@ -3,6 +3,10 @@
 	two alternating time frames.  During the first, the button will turn the LED on
 	and off.  During the second, the LED will remain on and the button will have no
 	effect.  The two modes are toggled back and forth every few seconds.
+
+	To be able to switch buttons (and, therefore, behavior) during runtime, the
+	interface function "getStatus" must be used.  Some buttons like MomentaryButton
+	have alternate, easier to use, interfaces and those cannot be used for this method.
 	
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
@@ -19,7 +23,6 @@
 int buttonPin	= 8;
 int ledPin		= 9;
 
-
 // We will access the button through a pointer.  That way we can change the button
 // behavior by changing what type of button is being pointed to.
 SimpleButton	*button;
@@ -35,7 +38,6 @@ AlwaysOnButton	onButton(buttonPin);
 unsigned long	intervalStartTime;
 const int		intervalLength		= 5000;
 int				currentState;
-
 
 void setup()
 {
@@ -55,25 +57,22 @@ void setup()
 	Serial.println("Serial monitor initialized.");
 }
 
-
 void loop()
 {
 	if (millis() - intervalStartTime > intervalLength)
 	{
-
-
 		// Toggle between the two states.  In state 0, the button can turn the LED
 		// on or off.  In state 1, the LED is always on.
 		if (currentState == 0)
 		{
-			// Were in state 0, so switch to state 1.
+			// We're in state 0, so switch to state 1.
 			button 			= &onButton;
 			currentState	= 1;
 			Serial.println("Current state: ALWAYS ON");
 		}
 		else
 		{
-			// Were in state 1, so switch to state 0.
+			// We're in state 1, so switch to state 0.
 			button			= &momentaryButton;
 			currentState	= 0;
 			Serial.println("Current state: BUTTON");
