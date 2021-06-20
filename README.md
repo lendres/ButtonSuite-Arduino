@@ -12,7 +12,7 @@ These buttons are either on or off.
 This is standard push (momentary) button.  It returns true when the button is pressed (held down) and false when it is not.
 
 #### LatchingButton
-Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a real momentary button.  The toggle button can be reset to the base (known) state by the user (with a long press) or programmically.
+Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a mechanical momentary button.  The toggle button can be reset to the base (known) state by the user by using a long press or programmically.
 
 #### AlwaysOnButton
 Always returns true (on).  Useful if you want to temporarily disable user input.
