@@ -1,9 +1,9 @@
 # ButtonSuite
 
-A class for adding functionality to push (momentary) buttons.  Includes debouncing.  This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.
+A class for adding functionality to push (momentary) buttons.  This library allows a simple momentary push button to be used as a momentary button, latching button, counter, or enumerator.  This library uses the Bounce2 library to add debouncing functionality.
 
 ## Types of Buttons
-The two categories of buttons that can be instantiated are described here.  See "Software Design" below for information about how the source code implements these behaviors.
+This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.
 
 ### Two State Buttons
 These buttons are either on or off.
@@ -33,7 +33,7 @@ Turns a push button (momentary button) into a button used to cycle through state
 Some abstract base classes provided common functionality and interface design.  These cannot be instantiated.
 
 #### ButtonBase
-Abstract class that is the base class for every other class and implements common behavior.
+Abstract class that is the base class for every other class and implements common behavior.  If you want to understand the software, you should start here.
 
 #### SimpleButton
 Abstract base class that provides interface for a two state button (button that only has an on and off state).  You cannot instantiate (create an instance) of this class.

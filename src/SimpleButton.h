@@ -25,10 +25,11 @@
 	Abstract class that provides interface for a two state button (button that only has
 	an on and off state).
 
-	The purpose of this class is to provide automatic implimentation of different behaviors.
-	By using different classes derived from SimpleButton, a class can automatically implement
-	momentary, latching, always on, or always off behavior.  This makes it easy to implement
-	different behaviors or even	switch behaviors during run time.
+	The purpose of this class is to allow software to switch behaviors during run time.  This
+	also makes software development easier by not locking the developer into a specific button
+	type.  By using different classes derived from SimpleButton, software can implement
+	momentary, latching, always on, or always off behavior simply by instantiating the required
+	derived class.
 */
 
 #ifndef TWOSTATEBUTTON_H
@@ -39,10 +40,14 @@
 
 class SimpleButton : public ButtonBase
 {
-	public:
+	protected:
+		// This is an abstract class and is only instantiated by derived classes.
+		// Therefore, all the constructors should be protected.
 		SimpleButton(int pin);
 		SimpleButton(int pin, int debounceInterval);
-		~SimpleButton();
+
+	public:
+		virtual ~SimpleButton();
 
 	public:
 		// Returns true if the button is currently pressed.

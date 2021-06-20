@@ -27,12 +27,20 @@
 	behavior into currently pressed, short press, long press, or idle (nothing
 	happening).
 	
-	This class also acts as a base class for other button related classes.
+	This class is a base class for all other button classes.
 
 	The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
 	is done by the Bounce2 library.
 
-	See also: PushButton, ToggleButton, PushButtonCounter, CycleButton
+	See also: SimpleButton, ResetableButton
+*/
+
+/*
+  You must have the following libraries to run this software.
+
+  Bounce2 by Thomas Ouellet Fredericks, et al.
+    - Can be installed from Arduino IDE Library Manager.
+    - https://github.com/thomasfredericks/Bounce2
 */
 
 /*
