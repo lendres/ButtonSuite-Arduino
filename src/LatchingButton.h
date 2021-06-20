@@ -23,29 +23,24 @@
 
 /*
 	Turns a push button (momentary button) into a toggle button (latching button).
-	Pressing the button alternates between on (ISPRESSED) and off (NOTPRESSED).
+	Pressing the button alternates between on and off.
+
 	This effectively creates a virtual latching switch controled by a momentary button.
 	The button can be reset to the base (known) state by the user (with a long press, if
 	enabled) or programmically.
+
+	There are two ways to use the button.  The easiest way is to use the "isLatched" function
+	which returns true if the button is latched (on) and false if it is not (off).
 	
-	After a button is press down, the first call to getStatus returns WASPRESSED.
-	This allows a derived class to act on the button down press, if required.  Further
-	calls to getStatus will then return either ISPRESSED or NOTPRESSED depending
-	on the current value of _latched.
+	The "getStatus" function is not as easy to use, but provides more information.  See the
+	"ButtonEnums.h" for descriptions of what the returned values mean.
 
 	When the button is released, the length of the button press is evaluated.  The behavior
 	is then:
-		Short Press - The value of _latched is switched and the new state returned (as ISPRESSED
-			OR NOT PRESSED).
+		Short Press - The value of _latched is toggled.
 
-		Long Press - If reset is enabled, the value of _latched is set to the default state
-			and the new state returned.  If reset is disabled, the behavior is the same as
-			as short press.
-
-	This button only returns the states, WASPRESSED, ISPRESSED or NOTPRESSED.  A short
-	press and a long press are used to either toggle the state or reset the state,
-	respectively.  Therefore, they are handled internally and there is no need to
-	return them.
+		Long Press - If reset is enabled, the value of _latched is set to the default state.
+		  If reset is disabled, the value of _latched is toggled.
 */
 
 /*
@@ -66,17 +61,31 @@ class LatchingButton : public SimpleButton, public ResetableButton
 	public:
 		LatchingButton(int pin);
 		LatchingButton(int pin, int debounceInterval);
+
 		~LatchingButton();
 
+	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:
 		// Set the default state.
 		void setDefaultState(bool latched);
 
+		// Sets the length of time required for a press to be considered a long press.
 		void setLongPressInterval(int longPressInterval);
 
-		// Checks the button and returns the current state (true for on or false for off).
+	// Status access functions.  Call one of these in the "loop" to get the status of the button.
+	public:
+		// Returns true if the button is latched (locked in the pressed/on state) or false if it is not (off
+		// state).  This is the easiest way to interface with the button.
+		bool isLatched();
+
+		// Returns the exact status of the button.  This is the most detailed option as it will return
+		// specific state of the button.  It is also used to remain compatible with the other two-state
+		// buttons.  If you need to make your code compatible with multiple button types you need to use
+		// this function.
 		BUTTONSTATUS getStatus();
 
+	// Other control functions.
+	public:
 		// Return to default state.
 		void reset();
 

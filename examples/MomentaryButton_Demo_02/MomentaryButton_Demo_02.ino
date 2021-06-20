@@ -1,6 +1,5 @@
 /*
-	Toggles an LED on when the button is held down and off when the button
-	is released.
+	Toggles an LED between on and off with each press of the button.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
@@ -19,14 +18,14 @@
 	LatchingButton, it is known what state the button (and therefore LED) is in.
 */
 
-#include "LatchingButton.h"
+#include "MomentaryButton.h"
 
 // Change these if your button or LED are on other pins.
 int buttonPin	= 8;
 int ledPin		= 9;
 
-// The LatchingButton will automatically configure the button pin.
-LatchingButton button(buttonPin);
+// The MomentaryButton will automatically configure the button pin.
+MomentaryButton button(buttonPin);
 
 void setup()
 {
@@ -37,13 +36,12 @@ void setup()
 
 void loop()
 {
-	// Press the button once to turn it on, and again to turn it off.
-	if (button.isLatched())
+	// Press the button once to turn the LED on and again it to turn it off.  This only captures button release
+	// events, i.e., nothing happens when the button is pressed down, only after the release.
+	if (button.wasPressed())
 	{
-		digitalWrite(ledPin, HIGH);
-	}
-	else
-	{
-		digitalWrite(ledPin, LOW);
+		// The button was pressed, so toggle the LED state.  To toggle it, the current value is read (digitalRead)
+		// and negated.  The result is written back to the pin to change its state.
+		digitalWrite(ledPin, !digitalRead(ledPin));
 	}
 }

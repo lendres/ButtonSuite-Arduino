@@ -1,6 +1,6 @@
 # ButtonSuite
 
-A class for adding functionality to push (momentary) buttons.  This library allows a simple momentary push button to be used as a momentary button, latching button, counter, or enumerator.  This library uses the Bounce2 library to add debouncing functionality.
+A library for adding functionality to push (momentary) buttons.  This library allows a simple momentary push button to be used as a momentary button, latching button, counter, or enumerator.  This library uses the Bounce2 library to add debouncing functionality.
 
 ## Types of Buttons
 This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.

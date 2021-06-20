@@ -32,7 +32,7 @@ MomentaryButton momentaryButton(buttonPin);
 AlwaysOnButton	onButton(buttonPin);
 
 // Used for timing and switching between the two states.
-unsigned long	intervalStartTime; 
+unsigned long	intervalStartTime;
 const int		intervalLength		= 5000;
 int				currentState;
 

@@ -39,6 +39,25 @@ MomentaryButton::~MomentaryButton()
 {
 }
 
+bool MomentaryButton::isPressed()
+{
+	return update() == BUTTONSTATUS::ISPRESSED;
+}
+
+bool MomentaryButton::wasPressed()
+{
+	BUTTONSTATUS status = update();
+
+	if (status == BUTTONSTATUS::WASSHORTPRESSED || status == BUTTONSTATUS::WASLONGPRESSED)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 BUTTONSTATUS MomentaryButton::getStatus()
 {
 	return update();

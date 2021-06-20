@@ -53,15 +53,23 @@ void LatchingButton::setLongPressInterval(int longPressInterval)
   _longPressInterval = longPressInterval;
 }
 
+bool LatchingButton::isLatched()
+{
+	getStatus();
+	return _latched;
+}
+
 BUTTONSTATUS LatchingButton::getStatus()
 {
-	// Catch transitions from HIGH to LOW.
-	switch (update())
+	// Get the status.
+	BUTTONSTATUS buttonStatus = update();
+
+	switch (buttonStatus)
 	{
-		case WASPRESSED:
+		case JUSTPRESSED:
 		{
 			// Capture the event of the button press.  Some classes may require this to act on it.
-			return WASPRESSED;
+			return JUSTPRESSED;
 		}
 
 		case WASSHORTPRESSED:
@@ -88,7 +96,9 @@ BUTTONSTATUS LatchingButton::getStatus()
 		case NOTPRESSED:
 		default:
 		{
-			// Nothing happened so we return based on the state.
+			// Nothing changed with the button, so we return a value based on the latched state.
+			// This means that it does not matter if the button is currently pressed or not pressed,
+			// it returns pressed when latched and not pressed when not latched.
 			return convertStateToButtonStatus();
 		}
 	}

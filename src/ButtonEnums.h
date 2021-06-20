@@ -32,7 +32,7 @@
 enum BUTTONSTATUS
 {
 	// Was just pressed down (first call to "update" after the button was pressed).
-	WASPRESSED,
+	JUSTPRESSED,
 	
 	// Is still pressed down.
 	ISPRESSED,

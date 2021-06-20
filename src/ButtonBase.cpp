@@ -52,18 +52,20 @@ void ButtonBase::setDebounceInterval(int debounceInterval)
 
 BUTTONSTATUS ButtonBase::update()
 {
+	// See ButtonEnums.h for the definitions of the different button states.
+
 	// Have the debouncer update.  This does most of the work of handling the button state.
 	// The debouncer determines the current state, if the state changed since the last time
 	// "update" was called, what the time between state changes was, and so on.
 	_debouncer.update();
 
-	// Catch transitions from HIGH to LOW.  This is the button press.
+	// Catch transitions from HIGH to LOW.  This happens right when the button is pressed down.
 	if (_debouncer.fell())
 	{
 		#ifdef BUTTONSUITEDEBUG
-			Serial.println("ButtonBase::update: WASPRESSED");
+			Serial.println("ButtonBase::update: JUSTPRESSED");
 		#endif
-		return WASPRESSED;
+		return JUSTPRESSED;
 	}
 
 	// Look to see if the button is currently pressed.
