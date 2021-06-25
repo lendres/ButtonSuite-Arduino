@@ -25,14 +25,14 @@
 
 // Constructors.
 LatchingButton::LatchingButton(int pin) :
-	SimpleButton(pin),
+	TwoStateButton(pin),
 	_latched(false),
 	_defaultState(false)
 {
 }
 
 LatchingButton::LatchingButton(int pin, int debounceInterval) :
-	SimpleButton(pin, debounceInterval),
+	TwoStateButton(pin, debounceInterval),
 	_latched(false),
 	_defaultState(false)
 {
@@ -53,34 +53,23 @@ void LatchingButton::setLongPressInterval(int longPressInterval)
   _longPressInterval = longPressInterval;
 }
 
-bool LatchingButton::isLatched()
-{
-	getStatus();
-	return _latched;
-}
-
-BUTTONSTATUS LatchingButton::getStatus()
+bool LatchingButton::pushed()
 {
 	// Get the status.
 	BUTTONSTATUS buttonStatus = update();
 
 	switch (buttonStatus)
 	{
-		case JUSTPRESSED:
-		{
-			// Capture the event of the button press.  Some classes may require this to act on it.
-			return JUSTPRESSED;
-		}
-
 		case WASSHORTPRESSED:
 		{
 			// Toggle state.
 			_latched = !_latched;
-			return WASSHORTPRESSED;
+			break;
 		}
 
 		case WASLONGPRESSED:
 		{
+			// If long press is enabled, we reset, otherwise toggle like a short press.
 			if (_resetOnLongPress)
 			{
 				reset();
@@ -89,34 +78,22 @@ BUTTONSTATUS LatchingButton::getStatus()
 			{
 				_latched = !_latched;
 			}
-			return WASLONGPRESSED;
+			break;
 		}
 
-		case ISPRESSED:
-		case NOTPRESSED:
 		default:
 		{
-			// Nothing changed with the button, so we return a value based on the latched state.
-			// This means that it does not matter if the button is currently pressed or not pressed,
-			// it returns pressed when latched and not pressed when not latched.
-			return convertStateToButtonStatus();
+			// Default doesn't do anything, it just catches all other values of the enumeration
+			// so the compiler doesn't complain they are not handled.
+			break;
 		}
 	}
+
+	// This converts the latched state into a state the getStatus() function can return.
+	return _latched;
 }
 
 void LatchingButton::reset()
 {
 	_latched = _defaultState;
-}
-
-BUTTONSTATUS LatchingButton::convertStateToButtonStatus()
-{
-	if (_latched)
-	{
-		return ISPRESSED;
-	}
-	else
-	{
-		return NOTPRESSED;
-	}
 }

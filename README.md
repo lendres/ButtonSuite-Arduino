@@ -35,10 +35,10 @@ Some abstract base classes provided common functionality and interface design.  
 #### ButtonBase
 Abstract class that is the base class for every other class and implements common behavior.  If you want to understand the software, you should start here.
 
-#### SimpleButton
+#### TwoStateButton
 Abstract base class that provides interface for a two state button (button that only has an on and off state).  You cannot instantiate (create an instance) of this class.
 
-The purpose of this class is to allow software to switch behaviors during run time.  This also makes software development easier by not locking the developer into a specific button type.  By using different classes derived from SimpleButton, software can implement momentary, latching, always on, or always off behavior simply by instantiating the required derived class.
+The purpose of this class is to allow software to switch behaviors during run time.  This also makes software development easier by not locking the developer into a specific button type.  By using different classes derived from TwoStateButton, software can implement momentary, latching, always on, or always off behavior simply by instantiating the required derived class.
 
 #### ResetableButton
 Abstract class for button classes that use a long press to indicate they should reset themselves to some initial/base value.  Exposes the interface for setting the enable/disable of the long press and the duration of the interval.

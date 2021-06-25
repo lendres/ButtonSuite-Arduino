@@ -2,7 +2,7 @@
 # Classes
 ################################
 ButtonBase	KEYWORD1
-SimpleButton	KEYWORD1
+TwoStateButton	KEYWORD1
 ResetableButton	KEYWORD1
 
 AlwaysOnButton	KEYWORD1

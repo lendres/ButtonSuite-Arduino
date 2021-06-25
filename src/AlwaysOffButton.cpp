@@ -25,12 +25,12 @@
 
 // Constructors.
 AlwaysOffButton::AlwaysOffButton(int pin) :
-	SimpleButton(pin)
+	TwoStateButton(pin)
 {
 }
 
 AlwaysOffButton::AlwaysOffButton(int pin, int debounceInterval) :
-	SimpleButton(pin, debounceInterval)
+	TwoStateButton(pin, debounceInterval)
 {
 }
 
@@ -39,7 +39,7 @@ AlwaysOffButton::~AlwaysOffButton()
 {
 }
 
-BUTTONSTATUS AlwaysOffButton::getStatus()
+bool AlwaysOffButton::pushed()
 {
-	return NOTPRESSED;
+	return false;
 }

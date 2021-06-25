@@ -21,20 +21,20 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "SimpleButton.h"
+#include "TwoStateButton.h"
 
 // Constructors.
-SimpleButton::SimpleButton(int pin) :
+TwoStateButton::TwoStateButton(int pin) :
 	ButtonBase(pin)
 {
 }
 
-SimpleButton::SimpleButton(int pin, int debounceInterval) :
+TwoStateButton::TwoStateButton(int pin, int debounceInterval) :
 	ButtonBase(pin, debounceInterval)
 {
 }
 
 // Destructor.
-SimpleButton::~SimpleButton()
+TwoStateButton::~TwoStateButton()
 {
 }

@@ -40,7 +40,7 @@ void setup()
 void loop()
 {
 	// Press the button once to turn it on, and again to turn it off.
-	if (button.isLatched())
+	if (button.pushed())
 	{
 		digitalWrite(ledPin, HIGH);
 	}

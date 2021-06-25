@@ -25,7 +25,7 @@ int ledPin		= 9;
 
 // We will access the button through a pointer.  That way we can change the button
 // behavior by changing what type of button is being pointed to.
-SimpleButton	*button;
+TwoStateButton	*button;
 
 // The MomentaryButton will automatically configure the button pin.
 MomentaryButton momentaryButton(buttonPin);

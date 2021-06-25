@@ -25,12 +25,12 @@
 
 // Constructors.
 AlwaysOnButton::AlwaysOnButton(int pin) :
-	SimpleButton(pin)
+	TwoStateButton(pin)
 {
 }
 
 AlwaysOnButton::AlwaysOnButton(int pin, int debounceInterval) :
-	SimpleButton(pin, debounceInterval)
+	TwoStateButton(pin, debounceInterval)
 {
 }
 
@@ -39,7 +39,7 @@ AlwaysOnButton::~AlwaysOnButton()
 {
 }
 
-BUTTONSTATUS AlwaysOnButton::getStatus()
+bool AlwaysOnButton::pushed()
 {
-	return ISPRESSED;
+	return true;
 }

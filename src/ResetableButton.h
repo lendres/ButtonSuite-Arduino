@@ -42,7 +42,6 @@ class ResetableButton
 		// This is an abstract class and is only instantiated by derived classes.
 		// Therefore, all the constructors should be protected.
 		ResetableButton();
-		ResetableButton(int pin, int debounceInterval);
 
 	public:
 		virtual ~ResetableButton();

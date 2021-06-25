@@ -21,28 +21,64 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*
-	This button always returns true.  See TwoStateButton.h for more information.
-*/
+#include "PushEventButton.h"
 
-#ifndef ALWAYSONBUTTON_H
-#define ALWAYSONBUTTON_H
-
-#include "Arduino.h"
-#include "TwoStateButton.h"
-
-class AlwaysOnButton : public TwoStateButton
+// Constructors.
+PushEventButton::PushEventButton(int pin) :
+	TwoStateButton(pin),
+	_captureType(CAPTURERELEASE)
 {
-	public:
-		AlwaysOnButton(int pin);
-		AlwaysOnButton(int pin, int debounceInterval);
-		
-		~AlwaysOnButton();
+}
 
-	// Status access functions.  Call in the "loop" to get the status of the button.
-	public:
-		// Always returns true.
-		bool pushed();
-};
+PushEventButton::PushEventButton(int pin, int debounceInterval) :
+	TwoStateButton(pin, debounceInterval),
+	_captureType(CAPTURERELEASE)
+{
+}
 
-#endif
+// Destructor.
+PushEventButton::~PushEventButton()
+{
+}
+
+void PushEventButton::setCaptureType(CAPTURETYPE captureType)
+{
+	_captureType = captureType;
+}
+
+bool PushEventButton::pushed()
+{
+	BUTTONSTATUS status = update();
+
+	switch (_captureType)
+	{
+		case CAPTUREPUSH:
+		{
+			if (status == JUSTPRESSED)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		case CAPTURERELEASE:
+		{
+			if (status == BUTTONSTATUS::WASSHORTPRESSED || status == BUTTONSTATUS::WASLONGPRESSED)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		default:
+		{
+			return false;
+		}
+	}
+}

@@ -32,7 +32,7 @@
 	The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
 	is done by the Bounce2 library.
 
-	See also: SimpleButton, ResetableButton
+	See also: TwoStateButton, ResetableButton
 */
 
 /*
@@ -77,7 +77,8 @@ class ButtonBase
 		void setDebounceInterval(int debounceInterval);
 
 	protected:
-		// Checks the button and returns the status/state.
+		// Checks the button and returns the status/state.  This does the work of categorizing the state
+		// of the button.  It is up to the derived class to determine behavior based on the returned value.
 		BUTTONSTATUS update();
 
 	private:

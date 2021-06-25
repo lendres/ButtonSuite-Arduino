@@ -43,24 +43,42 @@
 	when the button is pressed, the pin is brought to ground (LOW).
 */
 
-#ifndef MOMENTARYBUTTON_H
-#define MOMENTARYBUTTON_H
+#ifndef PUSHEVENTBUTTON_H
+#define PUSHEVENTBUTTON_H
 
 #include "Arduino.h"
 #include "TwoStateButton.h"
 
-class MomentaryButton : public TwoStateButton
+class PushEventButton : public TwoStateButton
 {
+	// Enums.
 	public:
-		MomentaryButton(int pin);
-		MomentaryButton(int pin, int debounceInterval);
+		// Specifies the base number to count from.  It's the number that will be returned if no button
+		// pushes have been detected.  The default is zero.
+		enum CAPTURETYPE
+		{
+			CAPTUREPUSH,
+			CAPTURERELEASE
+		};
 
-		~MomentaryButton();
+	public:
+		PushEventButton(int pin);
+		PushEventButton(int pin, int debounceInterval);
+
+		~PushEventButton();
+
+	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
+	public:
+		// Set the starting value.  It can be a zero based or one based counter.
+		void setCaptureType(CAPTURETYPE captureType);
 
 	// Status access functions.  Call one of these in the "loop" to get the status of the button.
 	public:
 		// Returns true if the button is currently pressed down and false otherwise.
 		bool pushed();
+
+	private:
+		CAPTURETYPE 		        _captureType;
 };
 
 #endif

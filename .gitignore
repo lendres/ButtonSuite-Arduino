@@ -35,3 +35,6 @@ src.ino
 *.exe
 *.out
 *.app
+
+# Temperary Files
+~$*

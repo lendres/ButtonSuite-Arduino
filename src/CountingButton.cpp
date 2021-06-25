@@ -52,19 +52,25 @@ int CountingButton::getCount()
 	switch (update())
 	{
 		case WASSHORTPRESSED:
+		{
 			// Button was pushed, so increment counter.
 			_count++;
 			break;
+		}
 
 		case WASLONGPRESSED:
+		{
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
 			break;
+		}
 
 		default:
+		{
 			break;
+		}
 	}
 	
 	 return _count;

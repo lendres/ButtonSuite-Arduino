@@ -92,6 +92,7 @@ int CycleButton::getValue()
 	switch (update())
 	{
 		case WASSHORTPRESSED:
+		{
 			// Button was pushed, so increment counter.
 			_value++;
 	
@@ -101,16 +102,21 @@ int CycleButton::getValue()
 				reset();
 			}
 			break;
+		}
 
 		case WASLONGPRESSED:
+		{
 			if (_resetOnLongPress)
 			{
 				reset();
 			}
 			break;
+		}
 
 		default:
+		{
 			break;
+		}
 	}
 
 	 return _value;

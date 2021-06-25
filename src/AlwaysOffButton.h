@@ -22,16 +22,16 @@
 */
 
 /*
-	This button always returns NOTPRESSED.  See SimpleButton.h for more information.
+	This button always returns false.  See TwoStateButton.h for more information.
 */
 
 #ifndef ALWAYSOFFBUTTON_H
 #define ALWAYSOFFBUTTON_H
 
 #include "Arduino.h"
-#include "SimpleButton.h"
+#include "TwoStateButton.h"
 
-class AlwaysOffButton : public SimpleButton
+class AlwaysOffButton : public TwoStateButton
 {
 	public:
 		AlwaysOffButton(int pin);
@@ -41,8 +41,8 @@ class AlwaysOffButton : public SimpleButton
 
 	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:
-		// Returns true if the button is currently pressed.
-		BUTTONSTATUS getStatus();
+		// Always returns false.
+		bool pushed();
 };
 
 #endif

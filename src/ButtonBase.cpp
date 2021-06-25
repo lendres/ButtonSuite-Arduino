@@ -59,7 +59,7 @@ BUTTONSTATUS ButtonBase::update()
 	// "update" was called, what the time between state changes was, and so on.
 	_debouncer.update();
 
-	// Catch transitions from HIGH to LOW.  This happens right when the button is pressed down.
+	// Catch transitions from HIGH to LOW.  This 
 	if (_debouncer.fell())
 	{
 		#ifdef BUTTONSUITEDEBUG
@@ -74,10 +74,20 @@ BUTTONSTATUS ButtonBase::update()
 	// if "read" returns false.
 	if (!_debouncer.read())
 	{
-		#ifdef BUTTONSUITEDEBUG
-			Serial.println("ButtonBase::update: ISPRESSED");
-		#endif
-		return ISPRESSED;
+		if (_debouncer.duration() < _longPressInterval)
+		{
+			#ifdef BUTTONSUITEDEBUG
+				Serial.println("ButtonBase::update: ISSHORTPRESSED");
+			#endif
+			return ISSHORTPRESSED;
+		}
+		else
+		{
+			#ifdef BUTTONSUITEDEBUG
+				Serial.println("ButtonBase::update: ISLONGPRESSED");
+			#endif
+			return ISLONGPRESSED;			
+		}
 	} 
 
 	// Catch transitions from LOW to HIGH.  This is the button release.  If the

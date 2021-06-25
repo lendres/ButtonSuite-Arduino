@@ -27,7 +27,7 @@
 
 	The purpose of this class is to allow software to switch behaviors during run time.  This
 	also makes software development easier by not locking the developer into a specific button
-	type.  By using different classes derived from SimpleButton, software can implement
+	type.  By using different classes derived from TwoStateButton, software can implement
 	momentary, latching, always on, or always off behavior simply by instantiating the required
 	derived class.
 */
@@ -38,20 +38,20 @@
 #include "Arduino.h"
 #include "ButtonBase.h"
 
-class SimpleButton : public ButtonBase
+class TwoStateButton : public ButtonBase
 {
 	protected:
 		// This is an abstract class and is only instantiated by derived classes.
 		// Therefore, all the constructors should be protected.
-		SimpleButton(int pin);
-		SimpleButton(int pin, int debounceInterval);
+		TwoStateButton(int pin);
+		TwoStateButton(int pin, int debounceInterval);
 
 	public:
-		virtual ~SimpleButton();
+		virtual ~TwoStateButton();
 
 	public:
 		// Returns true if the button is currently pressed.
-		virtual BUTTONSTATUS getStatus() = 0;
+		virtual bool pushed() = 0;
 };
 
 #endif

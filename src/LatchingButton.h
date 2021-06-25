@@ -54,9 +54,9 @@
 
 #include <Arduino.h>
 #include "ResetableButton.h"
-#include "SimpleButton.h"
+#include "TwoStateButton.h"
 
-class LatchingButton : public SimpleButton, public ResetableButton
+class LatchingButton : public TwoStateButton, public ResetableButton
 {
 	public:
 		LatchingButton(int pin);
@@ -75,23 +75,13 @@ class LatchingButton : public SimpleButton, public ResetableButton
 	// Status access functions.  Call one of these in the "loop" to get the status of the button.
 	public:
 		// Returns true if the button is latched (locked in the pressed/on state) or false if it is not (off
-		// state).  This is the easiest way to interface with the button.
-		bool isLatched();
-
-		// Returns the exact status of the button.  This is the most detailed option as it will return
-		// specific state of the button.  It is also used to remain compatible with the other two-state
-		// buttons.  If you need to make your code compatible with multiple button types you need to use
-		// this function.
-		BUTTONSTATUS getStatus();
+		// state).
+		bool pushed();
 
 	// Other control functions.
 	public:
 		// Return to default state.
 		void reset();
-
-	private:
-		// Converts the latched/unlatched property into a BUTTONSTATUS value.
-		BUTTONSTATUS convertStateToButtonStatus();
 
 	private:
 		bool		_latched;
