@@ -44,7 +44,7 @@ Abstract base class that provides interface for a two state button (button that 
 
 The purpose of this class is to allow software to switch behaviors during run time.  This also makes software development easier by not locking the developer into a specific button type.  By using different classes derived from TwoStateButton, software can implement momentary, latching, always on, or always off behavior simply by instantiating the required derived class.
 
-#### Resettable
+#### ResettableButton
 Abstract class for button classes that use a long press to indicate they should reset themselves to some initial/base value.  Exposes the interface for setting the enable/disable of the long press and the duration of the interval.
 
 
