@@ -1,18 +1,22 @@
 # ButtonSuite
 
-A library for using a simple mechanical push (momentary) button as a momentary button, a latching button, a counter, or an enumerator.  The library allows a mechanical momentary button to be used as a virtual button with different functionality.  The library implements the behavior of a momentary button, a latching button, a counter, and an enumerator.  The Bounce2 library is used to add debouncing functionality.
+A library for using a simple mechanical push (momentary) button as a momentary button, a latching button, a counter, an enumerator, and more.  The library allows a mechanical momentary button to be used as a virtual button with different functionality.  The library implements the behavior of a momentary button, a latching button, a counter, an enumerator, and more.  It also makes it very easy to develop buttons with your own custom behavior.  The Bounce2 library is used to add debouncing functionality.
+
 
 ## Types of Buttons
 This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.
 
 ### Two State Buttons
-These buttons are either on or off.
+These are binary state buttons and can only be on or off.
 
 #### MomentaryButton
 This is standard push (momentary) button.  It returns true when the button is pressed (held down) and false when it is not.
 
 #### LatchingButton
-Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a mechanical momentary button.  The toggle button can be reset to the base (known) state by the user (with a long press) or programmically.
+Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a mechanical momentary button.
+
+### PushEventButton
+This button class captures each individual button press as discrete events.  It does not matter how long the button is pressed down or released.  Only the transition between pressed and released is captured.  It can capture either the press event or the release event.
 
 #### AlwaysOnButton
 Always returns that the button is on.  Useful if you want to temporarily disable user input.
@@ -40,7 +44,7 @@ Abstract base class that provides interface for a two state button (button that 
 
 The purpose of this class is to allow software to switch behaviors during run time.  This also makes software development easier by not locking the developer into a specific button type.  By using different classes derived from TwoStateButton, software can implement momentary, latching, always on, or always off behavior simply by instantiating the required derived class.
 
-#### ResetableButton
+#### Resettable
 Abstract class for button classes that use a long press to indicate they should reset themselves to some initial/base value.  Exposes the interface for setting the enable/disable of the long press and the duration of the interval.
 
 
@@ -49,27 +53,21 @@ Abstract class for button classes that use a long press to indicate they should 
 
 https://github.com/lendres/ButtonSuite-Arduino
 
-
 ### Prerequisites
-
 This library requires the following librarys to run:
 
 * [Bounce2](https://github.com/thomasfredericks/Bounce2) - Debouncer for Arduino
 
-
 ### Installing
-
 For information on installing Arduino libaries, see: [Arduino Libraries](http://www.arduino.cc/en/Guide/Libraries)
 
 
 ## Versioning
-
 We use [SemVer](http://semver.org/) for versioning.
 
-## Authors
 
+## Authors
 * **Lance A. Endres** - [lendres](https://github.com/lendres)
 
 ## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

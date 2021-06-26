@@ -1,8 +1,7 @@
 /*
 	Toggles an LED when a button is pressed and released.  The LED is set to
 	the current state of the button.  If the button is latched, the LED is on,
-	if the button is not latched, the LED is off.  This button uses the "isLatched"
-	function to determine the buttons state.
+	if the button is not latched, the LED is off.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
@@ -12,22 +11,13 @@
 	should be used.
 */
 
-/*
-	Please note the difference between the examples MomentaryButton_Demo_02 and 
-	LatchingButton_Demo_01.  Both examples toggle an LED on and off but one uses
-	a MomentaryButton and one uses the LatchingButton.  While the behavior is the
-	same for these simple examples, there is an important difference.  In the case
-	of the MomentaryButton, the state of the LED (on or off) is not known.  For the
-	LatchingButton, it is known what state the button (and therefore LED) is in.
-*/
-
 #include "LatchingButton.h"
 
 // Change these if your button or LED are on other pins.
 int buttonPin	= 8;
 int ledPin		= 9;
 
-// The LatchingButton will automatically configure the button pin.
+// The button will automatically configure the button pin.
 LatchingButton button(buttonPin);
 
 void setup()
@@ -39,7 +29,9 @@ void setup()
 
 void loop()
 {
-	// Press the button once to turn it on, and again to turn it off.
+	// Press the button once to turn it on, and again to turn it off.  Here, the "pushed" function
+	// returns the internal latched state of the button.  It does not return whether the button is
+	// physically being pressed or not.
 	if (button.pushed())
 	{
 		digitalWrite(ledPin, HIGH);

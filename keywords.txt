@@ -3,7 +3,7 @@
 ################################
 ButtonBase	KEYWORD1
 TwoStateButton	KEYWORD1
-ResetableButton	KEYWORD1
+Resettable	KEYWORD1
 
 AlwaysOnButton	KEYWORD1
 MomentaryButton	KEYWORD1

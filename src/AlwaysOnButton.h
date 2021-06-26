@@ -34,8 +34,7 @@
 class AlwaysOnButton : public TwoStateButton
 {
 	public:
-		AlwaysOnButton(int pin);
-		AlwaysOnButton(int pin, int debounceInterval);
+		AlwaysOnButton();
 		
 		~AlwaysOnButton();
 

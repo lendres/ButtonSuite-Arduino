@@ -4,10 +4,6 @@
 	and off.  During the second, the LED will remain on and the button will have no
 	effect.  The two modes are toggled back and forth every few seconds.
 
-	To be able to switch buttons (and, therefore, behavior) during runtime, the
-	interface function "getStatus" must be used.  Some buttons like MomentaryButton
-	have alternate, easier to use, interfaces and those cannot be used for this method.
-	
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
 
@@ -27,16 +23,15 @@ int ledPin		= 9;
 // behavior by changing what type of button is being pointed to.
 TwoStateButton	*button;
 
-// The MomentaryButton will automatically configure the button pin.
+// The button will automatically configure the button pin.
 MomentaryButton momentaryButton(buttonPin);
 
-// Always on button.  The button pin is require to remain compatible with the base class,
-// however, it is not used by this class.
-AlwaysOnButton	onButton(buttonPin);
+// Always on button.
+AlwaysOnButton	onButton;
 
 // Used for timing and switching between the two states.
 unsigned long	intervalStartTime;
-const int		intervalLength		= 5000;
+const int		intervalLength			= 5000;
 int				currentState;
 
 void setup()
@@ -75,7 +70,7 @@ void loop()
 			// We're in state 1, so switch to state 0.
 			button			= &momentaryButton;
 			currentState	= 0;
-			Serial.println("Current state: BUTTON");
+			Serial.println("Current state: ACTIVATED BY BUTTON");
 		}
 
 		// Reset the start time.
@@ -83,8 +78,8 @@ void loop()
 	}
 
 	// If the button is pressed, turn the LED light on.  In state 0 (responding to the button),
-	// the actual state of the button is returned.  In state 1, on (ISPRESSED), is always returned.
-	if (button->getStatus() == ISPRESSED)
+	// the actual state of the button is returned.  In state 1, on (true), is always returned.
+	if (button->pushed())
 	{
 		// Turns on LED.
 		digitalWrite(ledPin, HIGH);

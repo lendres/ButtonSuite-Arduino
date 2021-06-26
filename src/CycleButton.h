@@ -44,9 +44,9 @@
 #define CYCLEBUTTON_H
 
 #include <Arduino.h>
-#include "ResetableButton.h"
+#include "Resettable.h"
 
-class CycleButton : ButtonBase, ResetableButton
+class CycleButton : public Resettable
 {
 	// Enums.
 	public:
@@ -87,6 +87,10 @@ class CycleButton : ButtonBase, ResetableButton
 	public:
 		// Return to default state.
 		void reset();
+
+	private:
+		// Increment the value to the next one or reset if the maximum has been reached.
+		void incrementValue();
 
 	private:
 		unsigned int _minValue;

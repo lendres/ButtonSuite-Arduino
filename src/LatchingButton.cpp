@@ -48,11 +48,6 @@ void LatchingButton::setDefaultState(bool latched)
 	_defaultState = latched;
 }
 
-void LatchingButton::setLongPressInterval(int longPressInterval)
-{
-  _longPressInterval = longPressInterval;
-}
-
 bool LatchingButton::pushed()
 {
 	// Get the status.
@@ -61,23 +56,10 @@ bool LatchingButton::pushed()
 	switch (buttonStatus)
 	{
 		case WASSHORTPRESSED:
+		case WASLONGPRESSED:
 		{
 			// Toggle state.
 			_latched = !_latched;
-			break;
-		}
-
-		case WASLONGPRESSED:
-		{
-			// If long press is enabled, we reset, otherwise toggle like a short press.
-			if (_resetOnLongPress)
-			{
-				reset();
-			}
-			else
-			{
-				_latched = !_latched;
-			}
 			break;
 		}
 

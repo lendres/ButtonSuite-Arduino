@@ -53,10 +53,10 @@
 #define LATCHINGBUTTON_H
 
 #include <Arduino.h>
-#include "ResetableButton.h"
+#include "Resettable.h"
 #include "TwoStateButton.h"
 
-class LatchingButton : public TwoStateButton, public ResetableButton
+class LatchingButton : public TwoStateButton
 {
 	public:
 		LatchingButton(int pin);
@@ -68,9 +68,6 @@ class LatchingButton : public TwoStateButton, public ResetableButton
 	public:
 		// Set the default state.
 		void setDefaultState(bool latched);
-
-		// Sets the length of time required for a press to be considered a long press.
-		void setLongPressInterval(int longPressInterval);
 
 	// Status access functions.  Call one of these in the "loop" to get the status of the button.
 	public:

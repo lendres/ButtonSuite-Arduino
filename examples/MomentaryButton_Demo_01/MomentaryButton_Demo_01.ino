@@ -1,6 +1,5 @@
 /*
 	Turns an LED on when the button is pressed and off when the button is released.
-	This example demonstrates the "isPressed" function.
 
 	The button should be wired such that when pressed, the "buttonPin" is
 	connected to ground.
@@ -16,7 +15,7 @@
 int buttonPin	= 8;
 int ledPin		= 9;
 
-// The MomentaryButton will automatically configure the button pin.
+// The button will automatically configure the button pin.
 MomentaryButton button(buttonPin);
 
 void setup()
@@ -28,8 +27,8 @@ void setup()
 
 void loop()
 {
-	// Press the button to turn the LED on and release it to turn it off.
-	if (button.isPressed())
+	// Hold the button down to turn the LED on and release it to turn it off.
+	if (button.pushed())
 	{
 		digitalWrite(ledPin, HIGH);
 	}

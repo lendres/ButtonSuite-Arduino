@@ -22,19 +22,11 @@
 */
 
 /*
-	This is standard momentary button, however, there are a few ways to use it.  Typically,
-	only one of the methods will be used depending on the required functionality.  Two functions
-	allow quick use for common scenarios.  The third allows for getting more detailed information.
-	
-	The "isPressed" function can be used to determine if the button is currently pressed or not.  This
-	is useful for when you only want to know to current state of the button.  For example, turning on
-	an LED when the button is held down and turning it off when the button is released.
-	
-	The "wasPressed" function can be used to determine when individual button actuation events (a press
-	and a release) occur.  For example, you want an event to occur after the release of a button press.
+	The PushEventButton captures each individual button press as discrete events.  It
+	does not matter how long the button is pressed down or released.  Only the transition
+	between pressed and released is captured.
 
-	The "getStatus" function returns the exact status.  See the "ButtonEnums.h" for descriptions of what
-	the returned values mean.
+	Either the push or the release event can be detected.
 */
 
 /*
@@ -63,6 +55,7 @@ class PushEventButton : public TwoStateButton
 
 	public:
 		PushEventButton(int pin);
+		PushEventButton(int pin, CAPTURETYPE captureType);
 		PushEventButton(int pin, int debounceInterval);
 
 		~PushEventButton();

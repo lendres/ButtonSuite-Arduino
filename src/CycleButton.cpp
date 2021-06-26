@@ -25,7 +25,7 @@
 
 // Constructors.
 CycleButton::CycleButton(int pin) :
-	ButtonBase(pin),
+	Resettable(pin),
 	_minValue(ZEROBASED),
 	_maxValue(2),
 	_value(0)
@@ -33,7 +33,7 @@ CycleButton::CycleButton(int pin) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue) :
-	ButtonBase(pin),
+	Resettable(pin),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -41,7 +41,7 @@ CycleButton::CycleButton(int pin, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
-	ButtonBase(pin),
+	Resettable(pin),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -49,7 +49,7 @@ CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
-	ButtonBase(pin, debounceInterval),
+	Resettable(pin, debounceInterval),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -57,7 +57,7 @@ CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval) :
-	ButtonBase(pin, debounceInterval),
+	Resettable(pin, debounceInterval),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -93,28 +93,29 @@ int CycleButton::getValue()
 	{
 		case WASSHORTPRESSED:
 		{
-			// Button was pushed, so increment counter.
-			_value++;
-	
-			// If we go over the max value, reset.
-			if (_value > _maxValue)
-			{
-				reset();
-			}
+			incrementValue();
 			break;
 		}
 
 		case WASLONGPRESSED:
 		{
+			// If the reset on long press mode is enabled, we reset, otherwise we treat
+			// this as a regular buttom push.
 			if (_resetOnLongPress)
 			{
 				reset();
+			}
+			else
+			{
+				incrementValue();
 			}
 			break;
 		}
 
 		default:
 		{
+			// Default is not doing anything, it is just here to stop the compiler from complaining that
+			// not all the cases have been handled.
 			break;
 		}
 	}
@@ -125,4 +126,16 @@ int CycleButton::getValue()
 void CycleButton::reset()
 {
 	_value = _minValue;
+}
+
+void CycleButton::incrementValue()
+{
+	// Button was pushed, so increment counter.
+	_value++;
+
+	// If we go over the max value, reset.
+	if (_value > _maxValue)
+	{
+		reset();
+	}
 }

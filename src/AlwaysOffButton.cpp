@@ -23,14 +23,9 @@
 
 #include "AlwaysOffButton.h"
 
-// Constructors.
-AlwaysOffButton::AlwaysOffButton(int pin) :
-	TwoStateButton(pin)
-{
-}
-
-AlwaysOffButton::AlwaysOffButton(int pin, int debounceInterval) :
-	TwoStateButton(pin, debounceInterval)
+// Constructor.
+AlwaysOffButton::AlwaysOffButton() :
+	TwoStateButton()
 {
 }
 

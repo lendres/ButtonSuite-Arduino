@@ -24,6 +24,11 @@
 #include "ButtonBase.h"
 
 // Constructors.
+ButtonBase::ButtonBase() :
+	_longPressInterval(0)
+{
+}
+
 ButtonBase::ButtonBase(int pin) :
 	_longPressInterval(1000)
 {

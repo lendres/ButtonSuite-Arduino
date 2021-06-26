@@ -32,7 +32,7 @@
 	The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
 	is done by the Bounce2 library.
 
-	See also: TwoStateButton, ResetableButton
+	See also: TwoStateButton, Resettable
 */
 
 /*
@@ -64,15 +64,23 @@
 
 class ButtonBase
 {
+	// This is an abstract class and is only instantiated by derived classes.
+	// Therefore, all the constructors should be protected.
 	protected:
-		// This is an abstract class and is only instantiated by derived classes.
-		// Therefore, all the constructors should be protected.
+		// Constructor for when debouncing and pin reading is not used.  If a derived class uses this constructor
+		// they must not call the "update" function.
+		ButtonBase();
+
+		// Constructor for setting up and using debouncing.
 		ButtonBase(int pin);
+
+		// Constructor for setting up and using debouncing.  Allows specifying the debounce interval.
 		ButtonBase(int pin, int debounceInterval);
 
 	public:
 		virtual ~ButtonBase();
 
+	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:
 		void setDebounceInterval(int debounceInterval);
 

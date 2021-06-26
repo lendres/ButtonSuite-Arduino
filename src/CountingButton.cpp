@@ -25,13 +25,13 @@
 
 // Constructors.
 CountingButton::CountingButton(int pin) :
-	ButtonBase(pin),
+	Resettable(pin),
 	_count(0)
 {
 }
 
 CountingButton::CountingButton(int pin, int debounceInterval) :
-	ButtonBase(pin, debounceInterval),
+	Resettable(pin, debounceInterval),
 	_count(0)
 {
 }
@@ -39,11 +39,6 @@ CountingButton::CountingButton(int pin, int debounceInterval) :
 // Destructor.
 CountingButton::~CountingButton()
 {
-}
-
-void CountingButton::setLongPressInterval(int longPressInterval)
-{
-  _longPressInterval = longPressInterval;
 }
 
 int CountingButton::getCount()
@@ -60,15 +55,23 @@ int CountingButton::getCount()
 
 		case WASLONGPRESSED:
 		{
+			// If the reset on long press mode is enabled, we reset, otherwise we treat
+			// this as a regular buttom push.
 			if (_resetOnLongPress)
 			{
 				reset();
+			}
+			else
+			{
+				_count++;
 			}
 			break;
 		}
 
 		default:
 		{
+			// Default is not doing anything, it is just here to stop the compiler from complaining that
+			// not all the cases have been handled.
 			break;
 		}
 	}

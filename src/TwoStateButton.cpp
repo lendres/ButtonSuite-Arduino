@@ -24,6 +24,11 @@
 #include "TwoStateButton.h"
 
 // Constructors.
+TwoStateButton::TwoStateButton() :
+	ButtonBase()
+{
+}
+
 TwoStateButton::TwoStateButton(int pin) :
 	ButtonBase(pin)
 {

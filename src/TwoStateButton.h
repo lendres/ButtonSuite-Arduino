@@ -40,9 +40,10 @@
 
 class TwoStateButton : public ButtonBase
 {
+	// This is an abstract class and is only instantiated by derived classes.
+	// Therefore, all the constructors should be protected.
 	protected:
-		// This is an abstract class and is only instantiated by derived classes.
-		// Therefore, all the constructors should be protected.
+		TwoStateButton();
 		TwoStateButton(int pin);
 		TwoStateButton(int pin, int debounceInterval);
 

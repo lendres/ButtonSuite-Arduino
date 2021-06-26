@@ -20,7 +20,7 @@
 int buttonPin   = 8;
 int ledPin      = 9;
 
-// The CountingButton will automatically configure the button pin.
+// The button will automatically configure the button pin.
 CountingButton button(buttonPin);
 
 void setup()

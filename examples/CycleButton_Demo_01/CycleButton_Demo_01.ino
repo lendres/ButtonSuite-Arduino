@@ -23,8 +23,8 @@
 int buttonPin   = 8;
 int ledPin      = 9;
 
-// The CycleButton will automatically configure the button pin.  The second number is
-// the maximum value of the counter.
+// The button will automatically configure the button pin.
+// The second number is the maximum value of the counter.
 CycleButton button(buttonPin, 6);
 
 void setup()

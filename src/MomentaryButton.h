@@ -22,19 +22,10 @@
 */
 
 /*
-	This is standard momentary button, however, there are a few ways to use it.  Typically,
-	only one of the methods will be used depending on the required functionality.  Two functions
-	allow quick use for common scenarios.  The third allows for getting more detailed information.
+	This is an off-(on) momentary button.  It is continuous off and momentarily on.  I.e., it is off
+	when not pushed and on while it is held down.
 	
-	The "isPressed" function can be used to determine if the button is currently pressed or not.  This
-	is useful for when you only want to know to current state of the button.  For example, turning on
-	an LED when the button is held down and turning it off when the button is released.
-	
-	The "wasPressed" function can be used to determine when individual button actuation events (a press
-	and a release) occur.  For example, you want an event to occur after the release of a button press.
-
-	The "getStatus" function returns the exact status.  See the "ButtonEnums.h" for descriptions of what
-	the returned values mean.
+	The "pushed" function can be used to determine if the button is currently pressed or not.
 */
 
 /*

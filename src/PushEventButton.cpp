@@ -29,6 +29,11 @@ PushEventButton::PushEventButton(int pin) :
 	_captureType(CAPTURERELEASE)
 {
 }
+PushEventButton::PushEventButton(int pin, CAPTURETYPE captureType) :
+	TwoStateButton(pin),
+	_captureType(captureType)
+{
+}
 
 PushEventButton::PushEventButton(int pin, int debounceInterval) :
 	TwoStateButton(pin, debounceInterval),

@@ -38,9 +38,9 @@
 #define COUNTINGBUTTON_H
 
 #include <Arduino.h>
-#include "ResetableButton.h"
+#include "Resettable.h"
 
-class CountingButton : public ButtonBase, public ResetableButton
+class CountingButton : public Resettable
 {
 	public:
 		CountingButton(int pin);
@@ -50,7 +50,6 @@ class CountingButton : public ButtonBase, public ResetableButton
 
 	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:
-		void setLongPressInterval(int longPressInterval);
 
 	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:

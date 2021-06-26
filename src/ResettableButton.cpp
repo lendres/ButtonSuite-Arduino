@@ -21,20 +21,33 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "ResetableButton.h"
+#include "ResettableButton.h"
 
 // Constructors.
-ResetableButton::ResetableButton() :
+Resettable::Resettable(int pin) :
+	ButtonBase(pin),
+	_resetOnLongPress(true)
+{
+}
+
+Resettable::Resettable(int pin, int debounceInterval) :
+	ButtonBase(pin, debounceInterval),
 	_resetOnLongPress(true)
 {
 }
 
 // Destructor.
-ResetableButton::~ResetableButton()
+Resettable::~Resettable()
 {
 }
 
-void ResetableButton::setLongPressReset(bool enabled)
+void Resettable::setResetOnLongPress(bool enabled)
 {
 	_resetOnLongPress = enabled;
+}
+
+void Resettable::setLongPressInterval(int longPressInterval)
+{
+	// The "_longPressInterval" member is in the "ButtonBase" class.
+  _longPressInterval = longPressInterval;
 }
