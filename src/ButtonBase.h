@@ -32,7 +32,7 @@
 	The work of debouncing and catching the state changes (LOW to HIGH or HIGH to LOW)
 	is done by the Bounce2 library.
 
-	See also: TwoStateButton, Resettable
+	See also: TwoStateButton, ResettableButton
 */
 
 /*

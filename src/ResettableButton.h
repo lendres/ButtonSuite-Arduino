@@ -36,15 +36,15 @@
 #include <Arduino.h>
 #include "ButtonBase.h"
 
-class Resettable : public ButtonBase
+class ResettableButton : public ButtonBase
 {
 	protected:
 		// This is an abstract class and is only instantiated by derived classes.
 		// Therefore, all the constructors should be protected.
-		Resettable(int pin);
-		Resettable(int pin, int debounceInterval);
+		ResettableButton(int pin);
+		ResettableButton(int pin, int debounceInterval);
 
-		virtual ~Resettable();
+		virtual ~ResettableButton();
 
 	// Set up functions.  Normally, these would be called in the "setup" function of your sketch.
 	public:

@@ -25,13 +25,13 @@
 
 // Constructors.
 CountingButton::CountingButton(int pin) :
-	Resettable(pin),
+	ResettableButton(pin),
 	_count(0)
 {
 }
 
 CountingButton::CountingButton(int pin, int debounceInterval) :
-	Resettable(pin, debounceInterval),
+	ResettableButton(pin, debounceInterval),
 	_count(0)
 {
 }

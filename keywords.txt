@@ -1,33 +1,37 @@
 ################################
 # Classes
 ################################
-ButtonBase	KEYWORD1
-TwoStateButton	KEYWORD1
-Resettable	KEYWORD1
+ButtonBase				KEYWORD1
+TwoStateButton			KEYWORD1
+ResettableButton		KEYWORD1
 
-AlwaysOnButton	KEYWORD1
-MomentaryButton	KEYWORD1
+AlwaysOffButton			KEYWORD1
+AlwaysOnButton			KEYWORD1
+MomentaryButton			KEYWORD1
+LatchingButton			KEYWORD1
+PushEventButton			KEYWORD1
 
-LatchingButton	KEYWORD1
-CountingButton	KEYWORD1
-CycleButton	KEYWORD1
+CountingButton			KEYWORD1
+CycleButton				KEYWORD1
 
 ################################
 # Functions
 ################################
-setDebounceInterval	KEYWORD2
-update	KEYWORD2
+setDebounceInterval		KEYWORD2
+update					KEYWORD2
 
-setLongPressReset	KEYWORD2
+pushed					KEYWORD2
+
+setResetOnLongPress		KEYWORD2
 setLongPressInterval	KEYWORD2
-reset	KEYWORD2
+reset					KEYWORD2
 
-isPressed	KEYWORD2
+getCount				KEYWORD2
 
 setDefaultState	KEYWORD2
 getStatus	KEYWORD2
 
-getCount	KEYWORD2
+
 
 setMinimum	KEYWORD2
 setMaximum	KEYWORD2

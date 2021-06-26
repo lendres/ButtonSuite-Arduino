@@ -53,7 +53,6 @@
 #define LATCHINGBUTTON_H
 
 #include <Arduino.h>
-#include "Resettable.h"
 #include "TwoStateButton.h"
 
 class LatchingButton : public TwoStateButton

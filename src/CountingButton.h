@@ -38,9 +38,9 @@
 #define COUNTINGBUTTON_H
 
 #include <Arduino.h>
-#include "Resettable.h"
+#include "ResettableButton.h"
 
-class CountingButton : public Resettable
+class CountingButton : public ResettableButton
 {
 	public:
 		CountingButton(int pin);

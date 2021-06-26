@@ -25,7 +25,7 @@
 
 // Constructors.
 CycleButton::CycleButton(int pin) :
-	Resettable(pin),
+	ResettableButton(pin),
 	_minValue(ZEROBASED),
 	_maxValue(2),
 	_value(0)
@@ -33,7 +33,7 @@ CycleButton::CycleButton(int pin) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue) :
-	Resettable(pin),
+	ResettableButton(pin),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -41,7 +41,7 @@ CycleButton::CycleButton(int pin, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
-	Resettable(pin),
+	ResettableButton(pin),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -49,7 +49,7 @@ CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue) :
 }
 
 CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
-	Resettable(pin, debounceInterval),
+	ResettableButton(pin, debounceInterval),
 	_minValue(ZEROBASED),
 	_maxValue(maxValue),
 	_value(0)
@@ -57,7 +57,7 @@ CycleButton::CycleButton(int pin, int maxValue, int debounceInterval) :
 }
 
 CycleButton::CycleButton(int pin, CYCLEBASE minValue, int maxValue, int debounceInterval) :
-	Resettable(pin, debounceInterval),
+	ResettableButton(pin, debounceInterval),
 	_minValue(minValue),
 	_maxValue(maxValue),
 	_value(0)
@@ -79,11 +79,6 @@ void CycleButton::setMinimum(CYCLEBASE base)
 void CycleButton::setMaximum(unsigned int maxValue)
 {
 	_maxValue = maxValue;
-}
-
-void CycleButton::setLongPressInterval(int longPressInterval)
-{
-  _longPressInterval = longPressInterval;
 }
 
 int CycleButton::getValue()

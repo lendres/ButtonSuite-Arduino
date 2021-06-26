@@ -44,9 +44,9 @@
 #define CYCLEBUTTON_H
 
 #include <Arduino.h>
-#include "Resettable.h"
+#include "ResettableButton.h"
 
-class CycleButton : public Resettable
+class CycleButton : public ResettableButton
 {
 	// Enums.
 	public:
@@ -74,9 +74,6 @@ class CycleButton : public Resettable
 
 		// Set the maximum value.
 		void setMaximum(unsigned int maxValue);
-
-		// Sets the length of time required for a press to be considered a long press.
-		void setLongPressInterval(int longPressInterval);
 
 	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:

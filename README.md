@@ -33,12 +33,13 @@ Turns a push button (momentary button) into a counter.  The counter is increment
 #### CycleButton
 Turns a push button (momentary button) into a button used to cycle through states (for example, an enumeration).  Pressing the button causes the value to increment.  Once the maximum value is reached, the value automatically resets to the initial value.  The value can also be reset to the initial value programmically or by the user (with a long press).
 
+
 ## Software Design
 Visit the Wiki to learn how the software is designed.
 
+
 ## About the Library
 ### Github Page
-
 https://github.com/lendres/ButtonSuite-Arduino
 
 ### Version 2
@@ -46,7 +47,6 @@ The purpose of Version 2 was to greatly simplify the interface as well as the in
 
 ### Prerequisites
 This library requires the following librarys to run:
-
 * [Bounce2](https://github.com/thomasfredericks/Bounce2) - Debouncer for Arduino
 
 ### Installing
@@ -59,6 +59,7 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## Authors
 * **Lance A. Endres** - [lendres](https://github.com/lendres)
+
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
