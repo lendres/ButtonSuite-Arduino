@@ -41,7 +41,7 @@ MomentaryButton::~MomentaryButton()
 
 bool MomentaryButton::pushed()
 {
-	BUTTONSTATUS buttonStatus = update();
+	BUTTONSUITE::BUTTONSTATUS buttonStatus = update();
 
-	return buttonStatus == ISSHORTPRESSED || buttonStatus == ISLONGPRESSED;
+	return buttonStatus == BUTTONSUITE::ISSHORTPRESSED || buttonStatus == BUTTONSUITE::ISLONGPRESSED;
 }

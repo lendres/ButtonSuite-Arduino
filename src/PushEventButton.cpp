@@ -53,13 +53,13 @@ void PushEventButton::setCaptureType(CAPTURETYPE captureType)
 
 bool PushEventButton::pushed()
 {
-	BUTTONSTATUS status = update();
+	BUTTONSUITE::BUTTONSTATUS status = update();
 
 	switch (_captureType)
 	{
 		case CAPTUREPUSH:
 		{
-			if (status == JUSTPRESSED)
+			if (status == BUTTONSUITE::JUSTPRESSED)
 			{
 				return true;
 			}
@@ -71,7 +71,7 @@ bool PushEventButton::pushed()
 
 		case CAPTURERELEASE:
 		{
-			if (status == BUTTONSTATUS::WASSHORTPRESSED || status == BUTTONSTATUS::WASLONGPRESSED)
+			if (status == BUTTONSUITE::BUTTONSTATUS::WASSHORTPRESSED || status == BUTTONSUITE::BUTTONSTATUS::WASLONGPRESSED)
 			{
 				return true;
 			}

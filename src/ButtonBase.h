@@ -87,7 +87,7 @@ class ButtonBase
 	protected:
 		// Checks the button and returns the status/state.  This does the work of categorizing the state
 		// of the button.  It is up to the derived class to determine behavior based on the returned value.
-		BUTTONSTATUS update();
+		BUTTONSUITE::BUTTONSTATUS update();
 
 	private:
 		Bounce 		        _debouncer;

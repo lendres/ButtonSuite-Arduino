@@ -28,26 +28,29 @@
 #ifndef BUTTONENUMS_H
 #define BUTTONENUMS_H
 
-// Button status.
-enum BUTTONSTATUS
+namespace BUTTONSUITE
 {
-	// Was just pressed down (first call to "update" after the button was pressed).
-	JUSTPRESSED,
-	
-	// The button is being pressed and has been held lown shorter than the long press duration.
-	ISSHORTPRESSED,
+	// Button status.
+	enum BUTTONSTATUS
+	{
+		// Was just pressed down (first call to "update" after the button was pressed).
+		JUSTPRESSED,
+		
+		// The button is being pressed and has been held lown shorter than the long press duration.
+		ISSHORTPRESSED,
 
-	// The button was just released and the duration held down was considered short (less than long press duration).
-	WASSHORTPRESSED,
+		// The button was just released and the duration held down was considered short (less than long press duration).
+		WASSHORTPRESSED,
 
-	// The button is being pressed and has been held down longer than the long press duration.
-	ISLONGPRESSED,
+		// The button is being pressed and has been held down longer than the long press duration.
+		ISLONGPRESSED,
 
-	// The button was just released and the duration held down was considered long (more than long press duration).
-	WASLONGPRESSED,
+		// The button was just released and the duration held down was considered long (more than long press duration).
+		WASLONGPRESSED,
 
-	// Button is not pressed/on.
-	NOTPRESSED
-};
+		// Button is not pressed/on.
+		NOTPRESSED
+	};
+}
 
 #endif

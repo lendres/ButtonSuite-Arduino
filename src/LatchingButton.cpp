@@ -51,12 +51,12 @@ void LatchingButton::setDefaultState(bool latched)
 bool LatchingButton::pushed()
 {
 	// Get the status.
-	BUTTONSTATUS buttonStatus = update();
+	BUTTONSUITE::BUTTONSTATUS buttonStatus = update();
 
 	switch (buttonStatus)
 	{
-		case WASSHORTPRESSED:
-		case WASLONGPRESSED:
+		case BUTTONSUITE::WASSHORTPRESSED:
+		case BUTTONSUITE::WASLONGPRESSED:
 		{
 			// Toggle state.
 			_latched = !_latched;

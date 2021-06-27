@@ -55,7 +55,7 @@ void ButtonBase::setDebounceInterval(int debounceInterval)
 	_debouncer.interval(debounceInterval);
 }
 
-BUTTONSTATUS ButtonBase::update()
+BUTTONSUITE::BUTTONSTATUS ButtonBase::update()
 {
 	// See ButtonEnums.h for the definitions of the different button states.
 
@@ -70,7 +70,7 @@ BUTTONSTATUS ButtonBase::update()
 		#ifdef BUTTONSUITEDEBUG
 			Serial.println("ButtonBase::update: JUSTPRESSED");
 		#endif
-		return JUSTPRESSED;
+		return BUTTONSUITE::JUSTPRESSED;
 	}
 
 	// Look to see if the button is currently pressed.
@@ -84,14 +84,14 @@ BUTTONSTATUS ButtonBase::update()
 			#ifdef BUTTONSUITEDEBUG
 				Serial.println("ButtonBase::update: ISSHORTPRESSED");
 			#endif
-			return ISSHORTPRESSED;
+			return BUTTONSUITE::ISSHORTPRESSED;
 		}
 		else
 		{
 			#ifdef BUTTONSUITEDEBUG
 				Serial.println("ButtonBase::update: ISLONGPRESSED");
 			#endif
-			return ISLONGPRESSED;			
+			return BUTTONSUITE::ISLONGPRESSED;			
 		}
 	} 
 
@@ -106,14 +106,14 @@ BUTTONSTATUS ButtonBase::update()
 			#ifdef BUTTONSUITEDEBUG
 				Serial.println("ButtonBase::update: WASSHORTPRESSED");
 			#endif
-			return WASSHORTPRESSED;
+			return BUTTONSUITE::WASSHORTPRESSED;
 		}
 		else
 		{
 			#ifdef BUTTONSUITEDEBUG
 				Serial.println("ButtonBase::update: WASLONGPRESSED");
 			#endif
-			return WASLONGPRESSED;
+			return BUTTONSUITE::WASLONGPRESSED;
 		}
 	}
 	
@@ -122,5 +122,5 @@ BUTTONSTATUS ButtonBase::update()
 	#ifdef BUTTONSUITEDEBUG
 		Serial.println("ButtonBase::update: NOTPRESSED");
 	#endif
-	return NOTPRESSED;
+	return BUTTONSUITE::NOTPRESSED;
 }

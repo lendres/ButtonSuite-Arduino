@@ -86,13 +86,13 @@ int CycleButton::getValue()
 	// Catch transitions from HIGH to LOW.
 	switch (update())
 	{
-		case WASSHORTPRESSED:
+		case BUTTONSUITE::WASSHORTPRESSED:
 		{
 			incrementValue();
 			break;
 		}
 
-		case WASLONGPRESSED:
+		case BUTTONSUITE::WASLONGPRESSED:
 		{
 			// If the reset on long press mode is enabled, we reset, otherwise we treat
 			// this as a regular buttom push.
