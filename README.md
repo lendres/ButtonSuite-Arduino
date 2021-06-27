@@ -2,6 +2,7 @@
 
 A library for using a simple mechanical push (momentary) button as a momentary button, a latching button, a counter, an enumerator, and more.  The library allows a mechanical momentary button to be used as a virtual button with different functionality.  The library implements the behavior of a momentary button, a latching button, a counter, an enumerator, and more.  It also makes it very easy to develop buttons with your own custom behavior.  The Bounce2 library is used to add debouncing functionality.
 
+Note that because some input devices like optical sensors or limit switches are functionally equivilent to tactile buttons, they can also be used with this library.
 
 ## Types of Buttons
 This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.
