@@ -65,9 +65,9 @@ class PushEventButton : public TwoStateButton
 		// Set the starting value.  It can be a zero based or one based counter.
 		void setCaptureType(CAPTURETYPE captureType);
 
-	// Status access functions.  Call one of these in the "loop" to get the status of the button.
+	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:
-		// Returns true if the button is currently pressed down and false otherwise.
+		// Returns true on the first call after a button press and false otherwise.
 		bool pushed();
 
 	private:

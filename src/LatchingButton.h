@@ -70,8 +70,8 @@ class LatchingButton : public TwoStateButton
 
 	// Status access functions.  Call one of these in the "loop" to get the status of the button.
 	public:
-		// Returns true if the button is latched (locked in the pressed/on state) or false if it is not (off
-		// state).
+		// Returns true if the button is latched (locked in the pressed/on state) or false if it is 
+		// not (off state).
 		bool pushed();
 
 	// Other control functions.
