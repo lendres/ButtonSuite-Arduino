@@ -1,7 +1,7 @@
 /*
 	The MIT License (MIT)
 	
-	Copyright (c) 2019 Lance A. Endres
+	Copyright (c) 2021 Lance A. Endres
 	
 	Permission is hereby granted, free of charge, to any person obtaining a copy of
 	this software and associated documentation files (the "Software"), to deal in
@@ -45,14 +45,14 @@ CustomButton::LIGHTBEHAVIOR CustomButton::getBehavior()
 	{
 		// We want to blink the light for 1 second when the button is pressed and released.
 		// In the ButtonSuite, this event returns the WASSHORTPRESSED.  
-		case WASSHORTPRESSED:
+		case BUTTONSUITE::WASSHORTPRESSED:
 		{
 			return BLINKONCE;
 		}
 
 		// We want to blink the light fastly as long as the button has been held down long
 		// enough to be considered a long press and still is being held down.
-		case ISLONGPRESSED:
+		case BUTTONSUITE::ISLONGPRESSED:
 		{
 			return FASTBLINK;
 		}
