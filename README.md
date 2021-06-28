@@ -44,7 +44,7 @@ Visit the Wiki to learn how the software is designed.
 https://github.com/lendres/ButtonSuite-Arduino
 
 ### Version 2
-The purpose of Version 2 was to greatly simplify the interface as well as the internal structure of the software.  Some of the more esoteric functionality was removed and some functionality was separated into different classes.  This meant backwards capatablity could not be maintained, however, the benefit is a much cleaner and easier to understand library.
+The purpose of Version 2 was to greatly simplify the interface as well as the internal structure of the software.  Some of the more esoteric functionality was removed and some functionality was separated into different classes.  This meant backwards compatibility could not be maintained, however, the benefit is a much cleaner and easier to understand library.
 
 ### Prerequisites
 This library requires the following librarys to run:
