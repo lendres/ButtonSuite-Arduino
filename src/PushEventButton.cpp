@@ -59,7 +59,7 @@ bool PushEventButton::pushed()
 	{
 		case CAPTUREPUSH:
 		{
-			if (status == BUTTONSUITE::JUSTPRESSED)
+			if (status & BUTTONSUITE::JUSTPRESSED)
 			{
 				return true;
 			}
@@ -71,7 +71,19 @@ bool PushEventButton::pushed()
 
 		case CAPTURERELEASE:
 		{
-			if (status == BUTTONSUITE::BUTTONSTATUS::WASSHORTPRESSED || status == BUTTONSUITE::BUTTONSTATUS::WASLONGPRESSED)
+			if (status & (BUTTONSUITE::WASSHORTPRESSED | BUTTONSUITE::WASLONGPRESSED))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		case CAPTUREBOTH:
+		{
+			if (status & (BUTTONSUITE::JUSTPRESSED | BUTTONSUITE::WASSHORTPRESSED | BUTTONSUITE::WASLONGPRESSED))
 			{
 				return true;
 			}

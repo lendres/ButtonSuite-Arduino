@@ -50,7 +50,8 @@ class PushEventButton : public TwoStateButton
 		enum CAPTURETYPE
 		{
 			CAPTUREPUSH,
-			CAPTURERELEASE
+			CAPTURERELEASE,
+			CAPTUREBOTH
 		};
 
 	public:
