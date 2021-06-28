@@ -34,22 +34,22 @@ namespace BUTTONSUITE
 	enum BUTTONSTATUS
 	{
 		// Was just pressed down (first call to "update" after the button was pressed).
-		JUSTPRESSED,
+		JUSTPRESSED				=   1,
 		
 		// The button is being pressed and has been held lown shorter than the long press duration.
-		ISSHORTPRESSED,
+		ISSHORTPRESSED			=   2,
 
 		// The button was just released and the duration held down was considered short (less than long press duration).
-		WASSHORTPRESSED,
+		WASSHORTPRESSED			=   4,
 
 		// The button is being pressed and has been held down longer than the long press duration.
-		ISLONGPRESSED,
+		ISLONGPRESSED			=   8,
 
 		// The button was just released and the duration held down was considered long (more than long press duration).
-		WASLONGPRESSED,
+		WASLONGPRESSED			=  16,
 
 		// Button is not pressed/on.
-		NOTPRESSED
+		NOTPRESSED				=  32
 	};
 }
 
