@@ -25,6 +25,9 @@ PushEventButton button(buttonPin, PushEventButton::CAPTURERELEASE);
 
 void setup()
 {
+	Serial.begin(9600);
+	Serial.println("*** Push Event Button Counter Demo 01 ***");
+	
 	// Setup the output LED.
 	pinMode(ledPin, OUTPUT);
 	digitalWrite(ledPin, LOW);
@@ -42,8 +45,7 @@ void loop()
 
 	if (buttonPushed)
 	{
-		// If the button was pushed, the light will be turned on.  We need a brief delay to make sure the
-		// on state of the LED is long enough to be seen.
+		// We need a brief delay to make sure the LED is on long enough to be seen.
 		delay(100);
 	}
 }

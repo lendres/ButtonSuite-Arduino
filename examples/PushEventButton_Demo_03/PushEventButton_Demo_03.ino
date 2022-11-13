@@ -25,6 +25,9 @@ PushEventButton button(buttonPin, PushEventButton::CAPTUREBOTH);
 
 void setup()
 {
+	Serial.begin(9600);
+	Serial.println("*** Push Event Button Counter Demo 03 ***");
+
 	// Setup the output LED.
 	pinMode(ledPin, OUTPUT);
 	digitalWrite(ledPin, LOW);
@@ -32,10 +35,10 @@ void setup()
 
 void loop()
 {
-	// This will return true only once for each button push.
-	// This example is triggered on the press of the button.  As soon as the button is pressed down
-	// this returns true.  It does not matter how long the button is held down, the light flashes
-	// for the same amount of time.  Nothing happens on the button release.
+	// This will return true once for the button push and once for the button release.
+	// This example is triggered on the transition of the button.  The LED will flash briefly on the button
+	// push and briefly on the button release.  It is recommended to hold the button down momentarily in order
+	// to be able to distinquish between the push and the release events.
 	bool buttonPushed = button.pushed();
 
 	// Set the LED to the state of the button press.
@@ -43,8 +46,7 @@ void loop()
 
 	if (buttonPushed)
 	{
-		// If the button was pushed, the light will be turned on.  We need a brief delay to make sure the
-		// on state of the LED is long enough to be seen.
+		// We need a brief delay to make sure the LED is on long enough to be seen.
 		delay(100);
 	}
 }
