@@ -79,7 +79,7 @@ BUTTONSUITE::BUTTONSTATUS ButtonBase::update()
 	// if "read" returns false.
 	if (!_debouncer.read())
 	{
-		if (_debouncer.duration() < _longPressInterval)
+		if (_debouncer.currentDuration() < _longPressInterval)
 		{
 			#ifdef BUTTONSUITEDEBUG
 				Serial.println("ButtonBase::update: ISSHORTPRESSED");
