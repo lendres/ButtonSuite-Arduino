@@ -2,22 +2,22 @@
 
 A library for using a simple mechanical push (momentary) button as a momentary button, a latching button, a counter, an enumerator, and more.  The library allows a mechanical momentary button to be used as a virtual button with different functionality.  The library implements the behavior of a momentary button, a latching button, a counter, an enumerator, and more.  It also makes it very easy to develop buttons with your own custom behavior.  The Bounce2 library is used to add debouncing functionality.
 
-Note that because some input devices like optical sensors or limit switches are functionally equivilent to tactile buttons, they can also be used with this library.
+Note that because some input devices like optical sensors or limit switches are functionally equivalent to tactile buttons, they can also be used with this library.
 
-## Types of Buttons
-This library contains two categories of button types.  The first category is two state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.
+## Categories of Buttons
+This library contains two categories of button types.  The first category is two-state buttons; these are either on or off.  The second category provides incrementing buttons that can perform different types of counting.  These two categories of buttons are described here.  See "Software Design" below for information about how the source code implements these behaviors.
 
 ### Two State Buttons
 These are binary state buttons and can only be on or off.
 
 #### MomentaryButton
-This is standard push (momentary) button.  It returns true when the button is pressed (held down) and false when it is not.
+This is a standard push (momentary) button.  It returns true when the button is pressed (held down) and false when it is not.
 
 #### LatchingButton
 Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a mechanical momentary button.
 
 #### PushEventButton
-This button class captures each individual button press as a discrete event.  It does not matter how long the button is pressed down or released.  Only the transition between pressed and released is captured.  It can capture either the press event, the release event, or both.
+This button class captures each button press as a discrete event.  It does not matter how long the button is pressed down or released.  Only the transition between pressed and released is captured.  It can capture either the press event, the release event, or both.
 
 #### AlwaysOnButton
 Always returns that the button is on.  Useful if you want to temporarily disable user input.
