@@ -45,13 +45,20 @@ class PushEventButton : public TwoStateButton
 {
 	// Enums.
 	public:
-		// Specifies the base number to count from.  It's the number that will be returned if no button
-		// pushes have been detected.  The default is zero.
+		// Specifies which events should be captured.
 		enum CAPTURETYPE
 		{
 			CAPTUREPUSH,
 			CAPTURERELEASE,
 			CAPTUREBOTH
+		};
+
+		// Specifies the type of event that occured.
+		enum EVENTTYPE
+		{
+			NONE,
+			PUSH,
+			RELEASE
 		};
 
 	public:
@@ -66,6 +73,9 @@ class PushEventButton : public TwoStateButton
 		// Set the starting value.  It can be a zero based or one based counter.
 		void setCaptureType(CAPTURETYPE captureType);
 
+		// Gets the last event that occured.
+		EVENTTYPE getLastEventType();
+
 	// Status access functions.  Call in the "loop" to get the status of the button.
 	public:
 		// Returns true on the first call after a button press and false otherwise.
@@ -73,6 +83,7 @@ class PushEventButton : public TwoStateButton
 
 	private:
 		CAPTURETYPE 		        _captureType;
+		EVENTTYPE					_lastEventType;
 };
 
 #endif

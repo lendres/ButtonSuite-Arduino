@@ -26,18 +26,21 @@
 // Constructors.
 PushEventButton::PushEventButton(int pin) :
 	TwoStateButton(pin),
-	_captureType(CAPTURERELEASE)
+	_captureType(CAPTURERELEASE),
+	_lastEventType(NONE)
 {
 }
 PushEventButton::PushEventButton(int pin, CAPTURETYPE captureType) :
 	TwoStateButton(pin),
-	_captureType(captureType)
+	_captureType(captureType),
+	_lastEventType(NONE)
 {
 }
 
 PushEventButton::PushEventButton(int pin, int debounceInterval) :
 	TwoStateButton(pin, debounceInterval),
-	_captureType(CAPTURERELEASE)
+	_captureType(CAPTURERELEASE),
+	_lastEventType(NONE)
 {
 }
 
@@ -51,6 +54,11 @@ void PushEventButton::setCaptureType(CAPTURETYPE captureType)
 	_captureType = captureType;
 }
 
+PushEventButton::EVENTTYPE PushEventButton::getLastEventType()
+{
+	return _lastEventType;
+}
+
 bool PushEventButton::pushed()
 {
 	BUTTONSUITE::BUTTONSTATUS status = update();
@@ -61,36 +69,35 @@ bool PushEventButton::pushed()
 		{
 			if (status & BUTTONSUITE::JUSTPRESSED)
 			{
+				_lastEventType = PUSH;
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			break;
 		}
 
 		case CAPTURERELEASE:
 		{
 			if (status & (BUTTONSUITE::WASSHORTPRESSED | BUTTONSUITE::WASLONGPRESSED))
 			{
+				_lastEventType = RELEASE;
 				return true;
 			}
-			else
-			{
-				return false;
-			}
+			break;
 		}
 
 		case CAPTUREBOTH:
 		{
-			if (status & (BUTTONSUITE::JUSTPRESSED | BUTTONSUITE::WASSHORTPRESSED | BUTTONSUITE::WASLONGPRESSED))
+			if (status & BUTTONSUITE::JUSTPRESSED)
 			{
+				_lastEventType = PUSH;
 				return true;
 			}
-			else
+			if (status & (BUTTONSUITE::WASSHORTPRESSED | BUTTONSUITE::WASLONGPRESSED))
 			{
-				return false;
+				_lastEventType = RELEASE;
+				return true;
 			}
+			break;
 		}
 
 		default:
@@ -98,4 +105,6 @@ bool PushEventButton::pushed()
 			return false;
 		}
 	}
+
+	return false;
 }
