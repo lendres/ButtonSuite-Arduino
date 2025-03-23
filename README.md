@@ -17,7 +17,7 @@ This is standard push (momentary) button.  It returns true when the button is pr
 Turns a push button (momentary button) into a toggle button (latching button).  Pressing the button alternates between on (true) and off (false).  This is a virtual latching switch controled by a mechanical momentary button.
 
 #### PushEventButton
-This button class captures each individual button press as discrete events.  It does not matter how long the button is pressed down or released.  Only the transition between pressed and released is captured.  It can capture either the press event or the release event.
+This button class captures each individual button press as a discrete event.  It does not matter how long the button is pressed down or released.  Only the transition between pressed and released is captured.  It can capture either the press event, the release event, or both.
 
 #### AlwaysOnButton
 Always returns that the button is on.  Useful if you want to temporarily disable user input.
